@@ -19,8 +19,6 @@ namespace Pinpaida.DataAccess.Stores
         public static List<StoresModel> GetStoreList(StoreSearchRequest request)
         {
             var list = new List<StoresModel>();
-            request.PageIndex = request.PageIndex <= 0 ? 1 : request.PageIndex;
-            request.PageSize = request.PageSize <= 0 || request.PageSize >= 50 ? 10 : request.PageSize;
             var bi = GetBrandInt(request.Brand);
             DataTable dt = new DataTable();
             try
@@ -43,8 +41,8 @@ namespace Pinpaida.DataAccess.Stores
                 {
                     getsql.Append($" AND  storeName Like '%{request.SearchKey}%' ");
                 }
-                getsql.Append($" limit {(request.PageIndex - 1) * request.PageSize } , {request.PageSize}; ");
 
+                getsql.Append($" Order by sortby asc ");
                 dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
                 list = GetStoresModelList(dt);
             }
@@ -94,7 +92,7 @@ namespace Pinpaida.DataAccess.Stores
                         state = ConvertHelper.ToString(dr["state"]),
                         status = ConvertHelper.ToInt32(dr["status"]),
                         storeAddress = ConvertHelper.ToString(dr["storeAddress"]),
-                        storeBadges = ConvertHelper.ToString(dr["storeBadges"]),
+                        storeBadges = ConvertHelper.ToInt32(dr["storeBadges"]),
                         storeEmail = ConvertHelper.ToString(dr["storeEmail"]),
                         storeID = ConvertHelper.ToString(dr["storeID"]),
                         storeImage = ConvertHelper.ToString(dr["storeImage"]),

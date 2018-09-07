@@ -57,7 +57,7 @@ namespace Pinpaida.Entity.Model
         /// <summary>现场、接机点，可不填  </summary>
         public int serviceTypes { get; set; }
         /// <summary>1-官方普通授权，3-官方优质授权，5-官方直营，4-网站认证，9-未知店，默认1\r\n </summary>
-        public string storeBadges { get; set; }
+        public int storeBadges { get; set; }
         /// <summary>营业时间 </summary>
         public string openTime { get; set; }
         /// <summary> 店铺图片，只存图片名称逗号隔开</summary>
