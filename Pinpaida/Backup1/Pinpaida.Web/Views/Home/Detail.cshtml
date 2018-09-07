@@ -1,0 +1,126 @@
+﻿<div class="wrap subnav">
+    当前位置：
+    <a href="#">品牌手机维修</a>
+    &gt;
+    <a href="#">苹果售后维修点</a>
+    &gt;
+    <a href="">北京苹果售后维修点</a>
+    &gt;
+    <a href="">Apple Care-高新区绿宝广场店</a>
+</div>
+
+<div class="wrap">
+    <div class="flex mt10" style="background:white;">
+        <div class="store flex">
+            <div class="storeimg">
+                <img src="https://service.iccidchaxun.com/img/R359_hero.jpg" alt=""/>
+            </div>
+            <div class="storeinfo">
+                <h1>Apple Care-高新区绿宝广场店</h1>
+                <div class="icons">
+                    <span class="ico-offical1">官方直营</span>
+                    <span class="ico-offical2">官方授权</span>
+                    <span class="ico-commend">优质推荐</span>
+                    <span class="ico-yuyue">支持预约</span>
+                    <span class="ico-unknown">未知店铺</span>
+                </div>
+                <div class="ico-poi">苏州市工业园区环球188大厦</div>
+                <div class="ico-time">周一到周日9:00-22:00</div>
+                <div class="ico-tags">
+                    <a class="gray" href="">苏州苹果维修点</a>
+                    <a class="gray" href="">苹果维修点</a>
+                    <a class="gray" href="">官方维修点</a>
+                </div>
+                <div class="phone">
+                    <a href="" class="">联系商家：400-888-8989</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="mt10">
+        <div class="map">
+            <h2>维修点地图</h2>
+            <div class="bdmap mt10">
+                <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=FGml7MyPcCgKVCzX77rXSZ9mkiDzuzKN&s=1"></script>
+<div id="allmap" style="width: 100%; height: 600px;"></div>
+<script type="text/javascript">
+                        // 百度地图API功能
+                        var map = new BMap.Map("allmap");
+                        map.enableScrollWheelZoom();
+                        var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+                        var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+                        //添加控件和比例尺
+                        map.addControl(top_left_control);        
+                        map.addControl(top_left_navigation);     
+    
+                        // 编写自定义函数,创建标注
+                        function addMarker(point){
+                          var marker = new BMap.Marker(point);
+                          map.addOverlay(marker);
+                        }
+                        var points = JSON.parse('{"list":[{"lat":120.1602740000,"lon":30.2866040000,"title":"杭州华为手机维修点：杭州湖墅南路店","address":"湖墅南路149号", "phone": "0571-89980081"},{"lat":120.128755,"lon":30.282611,"title":"杭州华为售后服务点：杭州文三路店(仅PC类产品维修)","address":"文三路553号浙江中小企业大厦12楼1207室", "phone": "0571-89714790"},{"lat":120.174851,"lon":30.256437,"title":"杭州华为维修点：杭州解放路店","address":"解放路180号", "phone": "0571-85105809"},{"lat":120.149213,"lon":30.312753,"title":"杭州华为手机维修点：杭州远洋国际店","address":"远见大厦113号（远洋国际中心D座1409）", "phone": "0571-85353330/0571-85353331"},{"lat":120.1009618917,"lon":30.2874529369,"title":"杭州华为售后服务点：杭州西城广场店","address":"文二西路566号", "phone": "0571-87325310"},{"lat":120.088532,"lon":30.340486,"title":"杭州华为售后服务点：杭州白马尊邸店","address":"三墩镇白马尊邸13#商铺二楼", "phone": "0571-81108995/81108996"},{"lat":120.216813,"lon":30.207132,"title":"杭州华为售后服务点：杭州江晖路店","address":"江晖路1324号2楼", "phone": "057186902775"},{"lat":120.256335,"lon":30.31575,"title":"杭州华为维修点：杭州禧福汇店","address":"彭埠街道红普路759号汇禾禧福汇5号楼202室", "phone": "0571-81959761/81959710"},{"lat":120.0277093030,"lon":30.2814915723,"title":"杭州华为授权维修点：赛银国际广场店","address":"五常街道赛银国际商务中心5幢102-6室", "phone": "0571-85215537"},{"lat":120.2755321168,"lon":30.1708712416,"title":"杭州华为授权维修点：萧山市心广场店","address":"萧绍路1428-1430号", "phone": "0571-83730208"},{"lat":120.350198,"lon":30.311904,"title":"杭州华为授权维修点：下沙4号大街店","address":"下沙4号大街8-3号（与3号大街交叉口）", "phone": "0571-87917213"},{"lat":120.307965,"lon":30.422317,"title":"杭州华为手机维修点：余杭藕花洲大街店","address":"临平藕花洲大街213、215号", "phone": "057188682765"},{"lat":119.952139,"lon":30.061612,"title":"杭州华为维修点：富阳孙权路店","address":"孙权路82号", "phone": "17367089429"},{"lat":119.7281680000,"lon":30.2325580000,"title":"杭州华为售后服务点：临安国瑞中心店","address":"锦城街道畔湖路18号", "phone": "057161075670"},{"lat":119.693838,"lon":29.801994,"title":"杭州华为售后服务点：桐庐迎春南路店","address":"迎春南路502号", "phone": "057169900932"}]}');
+                        var defaultPoint;
+
+                        function addClickHandler(title, desc, phone,marker){
+                            marker.addEventListener("click",function(e){
+                                openInfo(title, desc, phone, e)}
+                            );
+                        }
+                        function openInfo(title, desc, phone,e){
+                            var p = e.target;
+                            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                            var opts = {
+                                width : 300,     // 信息窗口宽度
+                                height: 120,     // 信息窗口高度
+                                title : title , // 信息窗口标题
+                                enableMessage:true//设置允许信息窗发送短息
+                            };
+                            var infoWindow = new BMap.InfoWindow('电话：'+ desc+'<br/>地址：'+phone,opts);  // 创建信息窗口对象 
+                            map.openInfoWindow(infoWindow,point); //开启信息窗口
+                        }
+                        
+                        for(var i=0;i<points['list'].length;i++){
+                            var point = new BMap.Point(points['list'][i].lat, points['list'][i].lon);
+                            addMarker(point);
+                            if(i == 0){
+                                defaultPoint = new BMap.Point(points['list'][i].lat, points['list'][i].lon);
+                            }
+
+                            var marker = new BMap.Marker(point);
+                            map.addOverlay(marker);        
+                            addClickHandler(points['list'][i].title, points['list'][i].address, points['list'][i].phone,marker);
+                        }
+                        map.centerAndZoom(defaultPoint, 12);
+                        
+                    </script>
+            </div>
+        </div>
+    </div>
+    <div class="wrap nearstore">
+        <h2>苏州其他苹果维修点推荐</h2>
+        <div class="storebox">
+            <div class="storeitem">
+                <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086924.jpg" alt="店铺名称" /></a>
+                <h3><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h3>
+                <a class="gray" href="">苏州苹果维修点</a>
+            </div>
+            <div class="storeitem">
+                <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086860.JPEG" alt="店铺名称" /></a>
+                <h3><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h3>
+                <a class="gray" href="">苏州苹果维修点</a>
+            </div>
+            <div class="storeitem">
+                <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086860.JPEG" alt="店铺名称" /></a>
+                <h3><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h3>
+                <a class="gray" href="">苏州苹果维修点</a>
+            </div>
+            <div class="storeitem">
+                <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086924.jpg" alt="店铺名称" /></a>
+                <h3><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h3>
+                <a class="gray" href="">苏州苹果维修点</a>
+            </div>
+        </div>
+    </div>
+
+</div>

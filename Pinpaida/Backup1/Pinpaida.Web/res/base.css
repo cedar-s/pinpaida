@@ -1,0 +1,360 @@
+﻿li{list-style:none;}
+ul,p,h1,h2,h3{margin:0;padding:0;}
+
+body {
+    background: #F5F5F5;
+    padding:0;
+    margin:0;
+    font-family:'微软雅黑';
+}
+a{color:#333;text-decoration:none;}
+.flex{display:flex;}
+.mt40 {
+    margin-top: 40px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mt20{margin-top:20px;}
+.ml20{margin-left:20px;}
+.mr20{margin-right:20px;}
+.m20{margin:20px;}
+.p20{padding:20px;}
+.gray{color:#999;font-size:12px;}
+.wrap{
+    width:1180px;
+    margin:0 auto;
+}
+.icons span {
+    color: white;
+    padding: 2px 4px;
+}
+
+.ico-offical1 {
+    background: #00c1de;
+}
+
+.ico-offical2 {
+    background: #00c1de;
+}
+
+.ico-commend {
+    background: green;
+}
+
+.ico-yuyue {
+    background: #f60;
+}
+
+.ico-unknown {
+    background: #999;
+}
+.topbar{background:white;}
+.head{
+    display:flex;
+    align-items:center;
+}
+.head .logo{
+    width:200px;
+}
+.head .logo img{
+    width:200px;
+
+}
+.head .nav{
+    flex:1;
+}
+.head .nav li{
+    display:inline;
+}
+.head .nav li a{
+    padding:18px 30px;
+    color:#333;
+    font-size:16px;
+    text-decoration:none;
+}
+    .head .nav li a.current {
+        color: white;
+        background: #00c1de;
+    }
+    .head .nav li a:hover {
+        color: #00c1de;
+    }
+    .head .nav li a.current:hover {
+        color: white;
+    }
+
+.index {
+    background: #1f2325 url(https://img.alicdn.com/tps/TB1G2UJOFXXXXX_aXXXXXXXXXXX-2880-1080.jpg) center;
+    background-size: 1400px;
+    background-position: 50% 0;
+    height: 400px;
+    display:flex;
+}
+.searchbox {
+    margin: 0 auto;
+    margin-top: 80px;
+}
+.searchtip {
+    color: white;
+    font-size: 48px;
+}
+.search {
+    width: 825px;
+    text-align: left;
+    margin-top: 50px;
+    background: #00c1de;
+    height: 54px;
+    border-radius: 3px;
+    display:flex;
+}
+    .search input[type=text] {
+        padding: 18px;
+        width: 520px;
+        border: 0;
+        font-size: 16px;
+        outline: none;
+    }
+    .search input[type=button] {
+        background: #00c1de;
+        font-size: 18px;
+        color: white;
+        border: 0;
+        padding: 10px 50px;
+    }
+
+.brand-sel {
+    position: relative;
+    width: 130px;
+    background: white url(/res/ico-sel.png) right center no-repeat;
+    background-size: 32px;
+    border-right: 1px solid #e6e6e6;
+    text-indent: 24px;
+    line-height: 55px;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+    background-position:90% 50%;
+}
+
+#brandlist {
+    position: absolute;
+    background:white;
+    line-height:40px;
+    width:100%;
+    border-radius:4px;
+    display:none;
+}
+    #brandlist li{
+        border-bottom:1px solid #e6e6e6;
+    }
+        #brandlist li:hover {
+            color: #00c1de;
+        }
+    #brandlist li:last-child{
+        border-bottom:0;
+    }
+.brand-sel:hover #brandlist{
+    display:block;
+}
+
+    .hotcity {
+        color: #e6e6e6;
+        font-size: 13px;
+    }
+    .hotcity a {
+        color: #e6e6e6;
+    }
+
+.subnav{padding-top:10px;display:block;}
+.subnav,.subnav a {
+    color: #999;
+    font-size: 12px;
+    font-weight:400;
+}
+.subnav h1{display:inline-block;}
+
+.nearstore{margin-top:60px;}
+    .nearstore h2 {
+        font-size: 28px;
+        color: #333;
+        text-align:center;
+    }
+    .nearstore p{color:#999;font-size:14px;text-align:center;}
+    .nearstore .storebox {
+        display: flex;
+        margin-top:40px;
+    }
+    .nearstore .storeitem {
+        margin-right: 20px;
+        width: 280px;
+
+    }
+    .nearstore .storeitem:last-child {
+        margin-right:0;   
+    }
+    .storeitem img{width:280px;height:180px;}
+    .storeitem h3 a {
+        font-size: 16px;
+        font-weight: normal;
+        display: inline-block;
+        width: 280px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin:8px 0;
+    }
+
+
+.searchtool {
+    background: white;
+    margin-top: 10px;
+    font-size: 13px;
+}
+.searchtool .line a{
+    padding:2px 12px;
+    font-size:13px;
+}
+    .searchtool .line a.curr {
+        color: #00c1de;
+        font-weight:bold;
+    }
+.hdlist {
+    border-bottom: 3px solid #00c1de;
+    margin-top:10px;
+}
+    .hdlist h1 a, .hdlist h2 a {
+        font-size: 18px;
+        background: #00c1de;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 4px 4px 0 0;
+        display: inline-block;
+    }
+
+.storelist {
+    background: white;
+    flex: 1;
+    padding: 20px;
+}
+.storelist h1{
+    font-size:24px;
+    color:#333;
+    margin-bottom:10px;
+}
+    .storelist .storeitem{
+        border-bottom: 1px solid #f2f2f2;
+        padding:15px 0;
+        display:flex;
+    }
+        .storelist .storeitem:hover {
+            background: #fafafa;
+        }
+        .storelist .storeitem .thumb {
+            width: 200px;
+        }
+        .storelist .storeitem .thumb img{
+            width:200px;
+            height:150px;
+        }
+        .storelist .storeitem .meta{
+            margin-left:20px;
+            flex:1;
+            color:#999;
+            line-height:30px;
+        }
+            .storelist .storeitem .meta h2 a{
+                font-weight:normal;
+            }
+            .storelist .storeitem .meta h2 a:hover{
+                color:#f60;
+            }
+            .icons {
+                font-size:12px;
+            }
+
+.ico-poi {
+                background: url(/res/ico-poi.png) no-repeat;
+                background-size: 18px;
+                background-position: 0 50%;
+                text-indent:22px;
+            }
+.ico-time {
+    background: url(/res/ico-time.png) no-repeat;
+    background-size: 14px;
+    background-position: 1px 50%;
+    text-indent: 22px;
+}
+.ico-tags {
+    background: url(/res/ico-tag.png) no-repeat;
+    background-size: 18px;
+    background-position: 0 50%;
+    text-indent: 22px;
+}
+    .ico-tags a:hover {
+        color: #333;
+    }
+                .storelist .storeitem .more {
+                    width: 150px;
+                    display: flex;
+                    align-items: center;
+                    text-align:center;
+                }
+            .storelist .storeitem .more .phone {
+                background: #f60 url(/res/ico-phone.png) no-repeat;
+                background-size:18px;
+                background-position:10px 50%;
+                color: white;
+                border-radius: 2px;
+                padding: 8px 30px;
+
+            }
+                .storelist .storeitem .more .phone:hover {
+                    background-color: #f7751e;
+                }
+                .storelist .storeitem .more .phone-text {
+                    color: #f60;
+                    margin: 15px 0;
+                    font-size: 18px;
+                }
+
+                    .side {
+                        width: 280px;
+                        background: white;
+                    }
+
+.storeimg,.storeimg img {
+    width: 500px;
+}
+.storeinfo{
+    margin-left:20px;
+    line-height:36px;
+    color:#999;
+}
+.storeinfo h1{
+    font-size:28px;
+    color:#333;
+    margin-top:20px;
+}
+
+        .storeinfo .phone a {
+            background: #f60 url(/res/ico-phone.png) no-repeat;
+            background-size: 18px;
+            background-position: 10px 50%;
+            color: white;
+            border-radius: 2px;
+            padding: 8px 30px;
+        }
+
+            .storeinfo .phone a:hover {
+                background-color: #f7751e;
+            }
+.bdmap{
+    background:white;
+    padding:20px;
+}
+
+.footer {
+    background: #1f2325;
+    padding: 20px;
+    height: 200px;
+}

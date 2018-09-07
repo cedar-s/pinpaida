@@ -1,0 +1,6 @@
+D:\Git-Project\Pinpaida\Pinpaida\Pinpaida.Common\bin\Debug\Pinpaida.Common.dll
+D:\Git-Project\Pinpaida\Pinpaida\Pinpaida.Common\bin\Debug\Pinpaida.Common.pdb
+D:\Git-Project\Pinpaida\Pinpaida\Pinpaida.Common\obj\Debug\Pinpaida.Common.csprojResolveAssemblyReference.cache
+D:\Git-Project\Pinpaida\Pinpaida\Pinpaida.Common\obj\Debug\Pinpaida.Common.csproj.CoreCompileInputs.cache
+D:\Git-Project\Pinpaida\Pinpaida\Pinpaida.Common\obj\Debug\Pinpaida.Common.dll
+D:\Git-Project\Pinpaida\Pinpaida\Pinpaida.Common\obj\Debug\Pinpaida.Common.pdb

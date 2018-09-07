@@ -1,0 +1,10 @@
+﻿<Properties StartupConfiguration="{4BC4E0D9-C646-43D6-BB4B-60710D40772B}|">
+  <MonoDevelop.Ide.ItemProperties.Pinpaida.Web PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
