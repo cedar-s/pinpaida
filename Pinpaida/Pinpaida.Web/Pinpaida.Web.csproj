@@ -118,9 +118,16 @@
       <Project>{8888a0ce-f32d-42b8-8a2a-b6945d8be4c8}</Project>
       <Name>Pinpaida.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pinpaida.Entity\Pinpaida.Entity.csproj">
+      <Project>{dc659559-b4c6-4702-8f91-c703558a8e67}</Project>
+      <Name>Pinpaida.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Demo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Brand\List.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

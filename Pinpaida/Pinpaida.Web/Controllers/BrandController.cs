@@ -9,14 +9,33 @@ namespace Pinpaida.Web.Controllers
 {
     public class BrandController : Controller
     {
-		public ActionResult BrandIndex(string brand, string city, string area)
+        public ActionResult BrandIndex(string brand, string city, string area)
         {
-			ViewData["brand"] = brand;
-			ViewData["city"] = city;
-			ViewData["area"] = area;
+            ViewData["brand"] = brand;
+            ViewData["city"] = city;
+            ViewData["area"] = area;
 
             return View();
         }
+
+        #region 列表页
+
+        /// <summary>
+        /// 列表页
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <param name="city"></param>
+        /// <param name="area"></param>
+        /// <returns></returns>
+        public ActionResult List(string brand, string city, string area)
+        {
+            ViewData["brand"] = brand;
+            ViewData["city"] = city;
+            ViewData["area"] = area;
+
+            return View();
+        }
+        #endregion
 
     }
 
