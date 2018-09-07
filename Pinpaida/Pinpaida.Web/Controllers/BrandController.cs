@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Pinpaida.DataAccess.Stores;
+using Pinpaida.Entity.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,17 @@ namespace Pinpaida.Web.Controllers
             ViewData["area"] = area;
 
             return View();
+        }
+
+        /// <summary>
+        /// 列表页
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public JsonResult GetStoreList(StoreSearchRequest request)
+        {
+            var list = StoresAccess.GetStoreList(request);
+            return Json(list);
         }
 
         #region 列表页

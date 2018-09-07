@@ -56,9 +56,20 @@
   <ItemGroup>
     <Compile Include="MySqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stores\StoresAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pinpaida.Common\Pinpaida.Common.csproj">
+      <Project>{d7a7d8a4-fc60-44c2-97d0-d6757cec2dd5}</Project>
+      <Name>Pinpaida.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pinpaida.Entity\Pinpaida.Entity.csproj">
+      <Project>{dc659559-b4c6-4702-8f91-c703558a8e67}</Project>
+      <Name>Pinpaida.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
