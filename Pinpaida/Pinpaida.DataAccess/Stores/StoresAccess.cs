@@ -43,7 +43,7 @@ namespace Pinpaida.DataAccess.Stores
                 {
                     getsql.Append($" AND  storeName Like '%{request.SearchKey}%' ");
                 }
-                getsql.Append($" limit({request.PageIndex} - 1) * {request.PageSize} , {request.PageSize}; ");
+                getsql.Append($" limit {(request.PageIndex - 1) * request.PageSize } , {request.PageSize}; ");
 
                 dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
                 list = GetStoresModelList(dt);

@@ -14,7 +14,11 @@ namespace Pinpaida.Web.Controllers
 			ViewData["city"] = "hahah";
             return View();
         }
-  
+        public ActionResult CityIndex1(string city)
+        {
+            ViewData["city"] = "CityIndex1";
+            return View();
+        }
 
     }
 

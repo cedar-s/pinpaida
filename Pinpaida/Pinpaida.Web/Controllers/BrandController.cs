@@ -28,7 +28,7 @@ namespace Pinpaida.Web.Controllers
         public JsonResult GetStoreList(StoreSearchRequest request)
         {
             var list = StoresAccess.GetStoreList(request);
-            return Json(list);
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         #region 列表页
