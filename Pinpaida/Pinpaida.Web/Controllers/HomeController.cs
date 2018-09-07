@@ -22,23 +22,6 @@ namespace Pinpaida.Web.Controllers
 
             return View();
         }
-
-        public JsonResult GetMysql() {
-            DataTable dt = new DataTable();
-            StringBuilder getsql = new StringBuilder();
-            getsql.AppendFormat(@"select DISTINCT a1.Longitude,a1.Latitude
-                            from area a
-                            inner join area a1 on a1.parentcode=a.regioncode
-                            where a.RegionCode in ('530000','540000','610000','620000','630000','640000','650000')");
-            dt = MySqlHelper.Query(getsql.ToString()).Tables[0];
-            return Json(dt);
-        }
-
-        public ActionResult Demo() {
-            ViewBag.Controller = "Admin";
-            ViewBag.Action = "Index";
-            return View("ActionName");
-        }
               
 		public ActionResult Detail()
         {

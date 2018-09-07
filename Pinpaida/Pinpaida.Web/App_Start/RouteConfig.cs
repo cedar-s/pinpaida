@@ -9,11 +9,8 @@ namespace Pinpaida.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            
+
 
             //品牌首页
             routes.MapRoute(
@@ -38,26 +35,32 @@ namespace Pinpaida.Web
                 constraints: new { brand = "^apple|huawei|xiaomi|oppo|vivo$" }
             );
 
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+
             //城市首页
-			routes.MapRoute(
+            routes.MapRoute(
                 name: "city",
 				url: "{city}",
                 defaults: new { controller = "City", action = "CityIndex", city = UrlParameter.Optional }
             );
+
             //区域页
-			routes.MapRoute(
+            routes.MapRoute(
                 name: "city-1",
 				url: "{city}/{area}",
 				defaults: new { controller = "City", action = "CityIndex", city = UrlParameter.Optional, area = UrlParameter.Optional }
             );
+
             //商圈页暂不开放
 			routes.MapRoute(
                 name: "city-1-1",
 				url: "{city}/{area}/{street}",
 				defaults: new { controller = "City", action = "CityIndex", city = UrlParameter.Optional, area = UrlParameter.Optional, street = UrlParameter.Optional }
             );
-
-            
         }
     }
 }
