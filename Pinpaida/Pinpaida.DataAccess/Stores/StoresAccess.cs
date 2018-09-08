@@ -153,7 +153,7 @@ namespace Pinpaida.DataAccess.Stores
             var areaModel = new AreaFilteMobdel();
             StringBuilder getsql = new StringBuilder();
             getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
-            getsql.Append($" AND  ( cityPy = '{word}' or city='{word}')  Limit 1; ");
+            getsql.Append($" AND  ( cityPy = '{word}' or city ='{word}')  Limit 1; ");
             var dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
             var model = GetStoresModel(dt);
             if (model != null && model.Id > 0)
@@ -199,8 +199,9 @@ namespace Pinpaida.DataAccess.Stores
             StringBuilder sql = new StringBuilder();
             sql.AppendFormat(@"SELECT * FROM stores s where s.Id={0}", id);
             DataTable dt = MySqlHelper.Query(sql.ToString())?.Tables[0];
-            var list= GetStoresModelList(dt);
-            if (list != null && list.Count > 0) {
+            var list = GetStoresModelList(dt);
+            if (list != null && list.Count > 0)
+            {
                 sm = list[0];
             }
             return sm;
@@ -219,14 +220,16 @@ namespace Pinpaida.DataAccess.Stores
                 {
                     apptSchedulerInd = x.apptSchedulerInd,
                     brand = x.brand,
-                    brandName = "",
+                    brandName = BrandList.GetName(x.brand),
                     Id = x.Id,
                     MainImage = x.mainImage,
                     openTime = x.openTime,
                     phoneNumber = x.phoneNumber,
                     storeAddress = x.storeAddress,
                     storeBadges = x.storeBadges,
-                    StoreName = x.storeName
+                    StoreName = x.storeName,
+                    city = x.city,
+                    cityPy = x.cityPy
                 }));
             }
             return list;

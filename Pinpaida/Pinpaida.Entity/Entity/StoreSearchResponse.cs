@@ -41,7 +41,10 @@ namespace Pinpaida.Entity.Entity
         public string phoneNumber { get; set; }
         /// <summary> 是否支持预约 </summary>
         public byte apptSchedulerInd { get; set; }
-
+        /// <summary> 城市 </summary>
+        public string city { get; set; }
+        /// <summary> 城市拼音 </summary>
+        public string cityPy { get; set; }
 
     }
 
@@ -79,6 +82,15 @@ namespace Pinpaida.Entity.Entity
             new BrandModel{Id=5,Py="oppo",Name="OPPO" },
             new BrandModel{Id=6,Py="vivo",Name="VIVO" },
         };
+
+        public static string GetName(int id)
+        {
+            return List.FirstOrDefault(x => x.Id == id)?.Name;
+        }
+        public static BrandModel GetModel(int id)
+        {
+            return List.FirstOrDefault(x => x.Id == id);
+        }
     }
     /// <summary>
     /// 热门城市
