@@ -1,16 +1,24 @@
 ﻿@using Pinpaida.Entity.Entity;
+@using Pinpaida.Common;
 @{
     var brandTip = ViewBag.BrandName + "售后维修点";
+    var cityTip = ViewBag.BrandName + ViewData["city"] + "售后维修点";
     var pageTip = ViewBag.BrandName + ViewData["city"] + ViewData["area"] + "售后维修点";
-
+    var gt = new HtmlString(">");
 }
 <div class="wrap subnav">
     当前位置：
     <a href="/">品牌手机维修</a>
     &gt;
     <a href="/@ViewData["brand"]/"> @brandTip</a>
-    &gt;
-    <a href=""> @pageTip</a>
+    @if (!string.IsNullOrEmpty(ConvertHelper.ToString(ViewData["city"])))
+    {
+        @gt<a href="/@ViewData["brand"]/@ViewData["city"]/"> @cityTip</a>
+    }
+    @if (!string.IsNullOrEmpty(ConvertHelper.ToString(ViewData["area"])))
+    {
+        @gt<a href="/@ViewData["brand"]/@ViewData["city"]/@ViewData["area"]/"> @pageTip</a>
+    }
 </div>
 
 <div class="wrap searchtool">
@@ -20,7 +28,14 @@
             区域：
             @foreach (AreaFilteMobdel am in ViewBag.AreaList)
             {
-                <a href="/list/@am.CityName/">@am.CityName</a>
+                if (!string.IsNullOrEmpty(ConvertHelper.ToString(ViewData["brand"])))
+                {
+                    <a href="/@ViewData["brand"]/@am.CityName/">@am.CityName</a>
+                }
+                else
+                {
+                    <a href="/list/@am.CityName/">@am.CityName</a>
+                }
             }
             @*<a class="curr" href="">北京</a>*@
         </div>
