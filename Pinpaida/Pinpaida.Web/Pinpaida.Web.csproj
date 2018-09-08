@@ -75,7 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
+    <Folder Include="Content\images\apple\" />
+    <Folder Include="Content\images\huawei\" />
+    <Folder Include="Content\images\oppo\" />
+    <Folder Include="Content\images\vivo\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
