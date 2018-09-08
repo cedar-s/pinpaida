@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="/res/base.css" rel="stylesheet" type="text/css" />
+    @RenderSection("head", false)
 </head>
 <body>
     <div class="topbar">
@@ -33,5 +34,6 @@
     </div>
     <script type="text/javascript" src="/res/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/res/base.js"></script>
+    @RenderSection("foot", false)
 </body>
 </html>

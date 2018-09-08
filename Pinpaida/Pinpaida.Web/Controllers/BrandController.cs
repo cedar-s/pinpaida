@@ -11,12 +11,26 @@ namespace Pinpaida.Web.Controllers
 {
     public class BrandController : Controller
     {
-        public ActionResult BrandIndex(string brand, string city, string area)
+        public ActionResult BrandIndex(string brand, string city, string area,string key)
         {
             ViewData["brand"] = brand;
             ViewData["city"] = city;
             ViewData["area"] = area;
-
+            var request = new StoreSearchRequest {
+                Area=area,
+                Brand=brand,
+                City=city,
+                PageSize=4,
+                SearchKey= key
+            };
+            var list = new List<StoreSearchModel>();
+            var data = StoresAccess.GetStoreList(request);
+            if (data != null && data.Any())
+            {
+                data = data.Take(request.PageSize).ToList();
+                list = ConvertList(data);
+            }
+            ViewBag.List = list;
             return View();
         }
 
@@ -33,7 +47,6 @@ namespace Pinpaida.Web.Controllers
             {
                 data = data.Take(request.PageSize).ToList();
                 list = ConvertList(data);
-
             }
             return Json(list, JsonRequestBehavior.AllowGet);
         }

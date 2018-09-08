@@ -1,4 +1,5 @@
-﻿<div class="wrap subnav">
+﻿@using Pinpaida.Entity.Entity;
+<div class="wrap subnav">
     当前位置：
     <a href="#">品牌手机维修</a>
     &gt;
@@ -17,118 +18,60 @@
     <div class="flex" style="background:white;">
         <div class="storelist">
             <div class="storebox">
-                <div class="storeitem">
-                    <div class="thumb">
-                        <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086924.jpg" alt="店铺名称" /></a>
-                    </div>
-                    <div class="meta">
-                        <h2><a href="" title="">苹果维修点：APPLE STORE谁谁谁谁谁</a></h2>
-                        <div class="icons">
-                            <span class="ico-offical1">官方直营</span>
-                            <span class="ico-offical2">官方授权</span>
-                            <span class="ico-commend">优质推荐</span>
-                            <span class="ico-yuyue">支持预约</span>
-                            <span class="ico-unknown">未知店铺</span>
+                @if (ViewBag.List != null && ViewBag.List.Count > 0)
+                {
+                    foreach (StoreSearchModel model2 in ViewBag.List)
+                    {
+                        var name = model2.StoreName;
+                        var mainImage = model2.MainImage;
+                        var storeBadges = model2.storeBadges;
+                        var apptSchedulerInd = model2.apptSchedulerInd;
+                        var openTime = model2.openTime;
+                        var phoneNumber = model2.phoneNumber;
+                        var storeAddress = model2.storeAddress;
+                        var icoOffical1 = storeBadges == 5 ? "ico-offical1" : "";
+                        var icoCommend = storeBadges == 3 ? "ico-commend" : "";
+                        var icoOffical2 = storeBadges == 1 ? "ico-offical2" : "";
+                        var icoYuyue = apptSchedulerInd == 1 ? "ico-yuyue" : "";
+                        var icoUnknown = storeBadges == 9 ? "ico-unknown" : "";
+                        <div class="storeitem">
+                            <div class="thumb">
+                                <a href="#" title=""><img src='..@mainImage' alt="@name" /></a>
+                            </div>
+                            <div class="meta">
+                                <h2>
+                                    <a href="" title="">
+                                        @name
+                                    </a>
+                                </h2>
+                                <div class="icons" data-storeBadges="@storeBadges">
+                                    <span class='@icoOffical1'>官方直营</span>
+                                    <span class='@icoOffical2'>官方授权</span>
+                                    <span class='@icoCommend'>优质推荐</span>
+                                    <span class='@icoYuyue'>支持预约</span>
+                                    <span class='@icoUnknown'>未知店铺</span>
+                                </div>
+                                <div class="poi">
+                                    @storeAddress
+                                </div>
+                                <div class="time">
+                                    @openTime
+                                </div>
+                                <div class="tags">
+                                    <a class="gray" href="">苏州苹果维修点</a>
+                                    <a class="gray" href="">苹果维修点</a>
+                                    <a class="gray" href="">官方维修点</a>
+                                </div>
+                            </div>
+                            <div class="more">
+                                <div>
+                                    <a href="" class="phone">联系商家</a>
+                                    <p class="phone-text">@phoneNumber</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="poi">苏州市工业园区环球188大厦</div>
-                        <div class="time">周一到周日9:00-22:00</div>
-                        <div class="tags">
-                            <a class="gray" href="">苏州苹果维修点</a>
-                            <a class="gray" href="">苹果维修点</a>
-                            <a class="gray" href="">官方维修点</a>
-                        </div>
-                    </div>
-                    <div class="more">
-                        <div>
-                            <a href="" class="phone">联系商家</a>
-                            <p class="phone-text">400-888-8989</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="storeitem">
-                    <div class="thumb">
-                        <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086924.jpg" alt="店铺名称" /></a>
-                    </div>
-                    <div class="meta">
-                        <h2><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h2>
-                        <div class="icons">
-                            <span class="ico-offical1">官方直营</span>
-                            <span class="ico-offical2">官方授权</span>
-                            <span class="ico-commend">优质推荐</span>
-                            <span class="ico-yuyue">支持预约</span>
-                            <span class="ico-unknown">未知店铺</span>
-                        </div>
-                        <div class="poi">苏州市工业园区环球188大厦</div>
-                        <div class="time">周一到周日9:00-22:00</div>
-                        <div class="tags">
-                            <a class="gray" href="">苏州苹果维修点</a>
-                            <a class="gray" href="">苹果维修点</a>
-                            <a class="gray" href="">官方维修点</a>
-                        </div>
-                    </div>
-                    <div class="more">
-                        <div>
-                            <a href="" class="phone">联系商家</a>
-                            <p class="phone-text">400-888-8989</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="storeitem">
-                    <div class="thumb">
-                        <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086924.jpg" alt="店铺名称" /></a>
-                    </div>
-                    <div class="meta">
-                        <h2><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h2>
-                        <div class="icons">
-                            <span class="ico-offical1">官方直营</span>
-                            <span class="ico-offical2">官方授权</span>
-                            <span class="ico-commend">优质推荐</span>
-                            <span class="ico-yuyue">支持预约</span>
-                            <span class="ico-unknown">未知店铺</span>
-                        </div>
-                        <div class="poi">苏州市工业园区环球188大厦</div>
-                        <div class="time">周一到周日9:00-22:00</div>
-                        <div class="tags">
-                            <a class="gray" href="">苏州苹果维修点</a>
-                            <a class="gray" href="">苹果维修点</a>
-                            <a class="gray" href="">官方维修点</a>
-                        </div>
-                    </div>
-                    <div class="more">
-                        <div>
-                            <a href="" class="phone">联系商家</a>
-                            <p class="phone-text">400-888-8989</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="storeitem">
-                    <div class="thumb">
-                        <a href="#" title=""><img src="http://img.xiuiphone.com/uploads/1530086924.jpg" alt="店铺名称" /></a>
-                    </div>
-                    <div class="meta">
-                        <h2><a href="" title="">苹果维修点：APPLE STORE王府井店</a></h2>
-                        <div class="icons">
-                            <span class="ico-offical1">官方直营</span>
-                            <span class="ico-offical2">官方授权</span>
-                            <span class="ico-commend">优质推荐</span>
-                            <span class="ico-yuyue">支持预约</span>
-                            <span class="ico-unknown">未知店铺</span>
-                        </div>
-                        <div class="poi">苏州市工业园区环球188大厦</div>
-                        <div class="time">周一到周日9:00-22:00</div>
-                        <div class="tags">
-                            <a class="gray" href="">苏州苹果维修点</a>
-                            <a class="gray" href="">苹果维修点</a>
-                            <a class="gray" href="">官方维修点</a>
-                        </div>
-                    </div>
-                    <div class="more">
-                        <div>
-                            <a href="" class="phone">联系商家</a>
-                            <p class="phone-text">400-888-8989</p>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
             </div>
             <div class="pager">
 
@@ -142,3 +85,9 @@
         </div>
     </div>
 </div>
+@section foot
+{
+    <script type="text/javascript">
+
+    </script>
+} 
