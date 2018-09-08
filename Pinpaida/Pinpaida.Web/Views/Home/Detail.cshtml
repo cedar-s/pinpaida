@@ -1,24 +1,29 @@
 ﻿@using Pinpaida.Entity.Entity;
+@using Pinpaida.Common;
+
 <div class="wrap subnav">
     @{
-        var brandname = ViewBag.BrandModel.Name+ "售后维修点";
         var cityname = ViewBag.store.city;
         var storeName = ViewBag.store.storeName;
         var lat = ViewBag.store.geoY;
         var lon = ViewBag.store.geoX;
         var storeAddress = ViewBag.store.storeAddress;
         var phone = ViewBag.store.phoneNumber;
-        var citybrandname = ViewBag.store.city + ViewBag.BrandModel.Name+ "售后维修点";
+        var brandname = ViewBag.BrandModel.Name + "售后维修点";
+        var citybrandname = ViewBag.BrandModel.Name + ViewBag.store.city + "售后维修点";
+        var areabrandname = ViewBag.BrandModel.Name + ViewBag.store.city + ViewBag.store.district + "售后维修点";
 
     }
     当前位置：
-    <a href="#">品牌手机维修</a>
+    <a href="/">品牌手机维修</a>
     &gt;
-    <a href="#">@brandname</a>
+    <a href="/@ViewBag.BrandModel.Py/"> @brandname</a>
     &gt;
-    <a href="">@citybrandname </a>
+    <a href="/@ViewBag.BrandModel.Py/@ViewBag.store.city/"> @citybrandname</a>
     &gt;
-    <a href="">@storeName</a>
+    <a href="/@ViewBag.BrandModel.Py/@ViewBag.store.city/@ViewBag.store.district/"> @areabrandname</a>
+    &gt;
+    <a href="#">@storeName</a>
 </div>
 
 <div class="wrap">
@@ -127,9 +132,9 @@
                     var mainImageAll = model3.MainImageAll;
                     var tip = model3.city + model3.brandName + "维修点";
                     <div class="storeitem" data-id="@stId">
-                        <a href="#" title=""><img src="@mainImageAll" alt="@name" /></a>
-                        <h3><a href="" title="@name">@name</a></h3>
-                        <a class="gray" href="">@tip</a>
+                        <a href="/home/detail/?id=@stId" title=""><img src="@mainImageAll" alt="@name" /></a>
+                        <h3><a href="/home/detail/?id=@stId" title="@name">@name</a></h3>
+                        <a class="gray" href="/home/detail/?id=@stId">@tip</a>
                     </div>
                 }
             }
