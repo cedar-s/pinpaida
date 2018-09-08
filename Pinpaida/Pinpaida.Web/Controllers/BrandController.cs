@@ -63,29 +63,25 @@ namespace Pinpaida.Web.Controllers
         public RedirectResult Search(int brand, string word)
         {
             var areaModel = StoresAccess.GetAreaFilter(word);
-            var url = string.Empty;
             var brandList = new List<string> { "apple", "huawei", "xiaomi", "oppo", "vivo" };
             var brandName = StoresAccess.GetBrandString(brand);
             var isBrand = brandList.IndexOf(brandName) >= 0;
+            var url = isBrand ? $"{brandName}/" : "list/";
             if (areaModel != null && areaModel.AreaType > 0)
             {//带区域的
+                word = string.Empty;
                 if (areaModel.AreaType == 1)
                 {
-                    url = $"list/{areaModel.CityNamePy}/";
+                    url += $"{areaModel.CityNamePy}/";
                 }
                 else
                 {
-                    url = $"list/{areaModel.CityNamePy}/{areaModel.AreaNamePy}/";
+                    url += $"{areaModel.CityNamePy}/{areaModel.AreaNamePy}/";
                 }
-                if (isBrand) url += $"brand={brandName}";
-            }
-            else if (isBrand)
-            {//"?word={word}"
-                url = $"{brandName}/?word={word}";
             }
             else
             {
-                url = $"list/?word={word}";
+                url += $"?word={word}";
             }
 
             return Redirect(url);
