@@ -85,9 +85,7 @@
                     }
                 }
             </div>
-            <div class="pager">
-
-            </div>
+            <div id="pager"></div>
         </div>
         <div class="side">
             <div style="text-align:right;"><img src="https://www.caobao.com/Public/Imgadv/201607/5780a3ac55753.jpg" /></div>
@@ -98,8 +96,29 @@
     </div>
 </div>
 @section foot
-{
-    <script type="text/javascript">
-
-    </script>
+{  @if (ViewBag.Total > 10)
+    {
+        <script type="text/javascript">
+            var pager = new PagerView('pager');
+            pager.index = @ViewBag.PageIndex;
+            pager.size = @ViewBag.PageSize;
+            pager.itemCount = @ViewBag.Total;
+            pager.onclick = function (index) {
+                var url = document.URL;
+                if (url.indexOf('?') < 0) {
+                    url += '?page=' + index
+                }
+                else {
+                    if (url.indexOf('page=') > 0) {
+                        url = url.replace('page=' +@ViewBag.PageIndex, 'page=' + index);
+                    }
+                    else {
+                        url += '&page=' + index;
+                    }
+                }
+                window.location.href = url;
+            };
+        pager.render();
+        </script>
+    }
 } 

@@ -463,3 +463,71 @@ a {
     padding: 20px;
     height: 200px;
 }
+
+
+.PagerView {
+    font-size: 12px;
+    text-align: right;
+    line-height: 100%;
+    color: #999999;
+}
+
+    .PagerView span {
+        color: #4eb900;
+        margin: 0 4px;
+        padding: 3px 8px;
+        border: 1px solid #cccccc;
+        line-height: 25px;
+        border-radius: 2px;
+    }
+
+        .PagerView span.on {
+            color: #fff;
+            border: none;
+            background: #4eb900;
+            border: 1px solid #4eb900;
+        }
+
+    .PagerView a {
+        color: #4eb900;
+        text-decoration: none;
+    }
+
+        .PagerView a:hover span {
+            color: white;
+            text-decoration: none;
+            background: #4eb900;
+            border: 1px solid #4eb900;
+        }
+
+        .PagerView a span {
+            color: #4eb900;
+            border: 1px solid #dbdbdb;
+        }
+
+.pagerView-search {
+    display: inline-block;
+}
+
+    .pagerView-search input[type="number"] {
+        width: 5em;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+        .pagerView-search input[type="number"]::-webkit-inner-spin-button,
+        .pagerView-search input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .pagerView-search input[type="number"]:focus {
+            border-color: #87cba3;
+        }
+
+    .pagerView-search .eui-btn {
+        margin-top: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
