@@ -35,7 +35,7 @@ namespace Pinpaida.DataAccess.Stores
                 }
                 if (!string.IsNullOrEmpty(request.Area))
                 {
-                    getsql.Append($" AND  state = '{request.Area}' ");
+                    getsql.Append($" AND  district = '{request.Area}' ");
                 }
                 if (!string.IsNullOrEmpty(request.SearchKey))
                 {

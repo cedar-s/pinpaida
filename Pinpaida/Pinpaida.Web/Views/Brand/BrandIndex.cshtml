@@ -1,11 +1,16 @@
 ﻿@using Pinpaida.Entity.Entity;
+@{
+    var brandTip = ViewBag.BrandName + "售后维修点";
+    var pageTip = ViewBag.BrandName + ViewData["city"] + ViewData["area"] + "售后维修点";
+
+}
 <div class="wrap subnav">
     当前位置：
     <a href="/">品牌手机维修</a>
     &gt;
-    <a href="/@ViewData["brand"]/"> @ViewBag.BrandName 售后维修点</a>
+    <a href="/@ViewData["brand"]/"> @brandTip</a>
     &gt;
-    <a href=""> @ViewBag.BrandName@ViewData["city"]@ViewData["area"]售后维修点</a>
+    <a href=""> @pageTip</a>
 </div>
 
 <div class="wrap searchtool">
@@ -22,7 +27,7 @@
     }
 </div>
 <div class="wrap hdlist">
-    <h1><a href="">@ViewBag.BrandName 手机维修点</a></h1>
+    <h1><a href="">@pageTip</a></h1>
 </div>
 <div class="wrap">
     <div class="flex" style="background:white;">
@@ -83,6 +88,21 @@
                             </div>
                         </div>
                     }
+                }
+                else
+                {
+                    <div class="search_null">
+                        <div class="txt color888">
+                            很抱歉，暂时无法找到与“<span style="color:#1c8fff">
+                                @ViewBag.word
+                            </span>”相关的维修点信息。
+                        </div>
+                        <ul class="search_null_list">
+                            <li>温馨提示</li>
+                            <li class="color888">·请检查您的输入是否正确。</li>
+                            <li class="color888">·修改您的筛选条件。</li>
+                        </ul>
+                    </div>
                 }
             </div>
             <div id="pager"></div>

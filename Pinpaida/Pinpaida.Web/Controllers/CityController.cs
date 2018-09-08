@@ -22,7 +22,7 @@ namespace Pinpaida.Web.Controllers
             {
                 areaModel = StoresAccess.GetAreaFilter(city);
             }
-            else
+            if (areaModel == null || areaModel.AreaType == 0)
             {
                 return Redirect("/");
             }

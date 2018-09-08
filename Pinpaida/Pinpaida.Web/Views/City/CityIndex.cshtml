@@ -1,13 +1,20 @@
 ﻿@using Pinpaida.Entity.Entity;
+@{
+    var cityTip = ViewBag.CityName + "售后维修点";
+    var areaTip = ViewBag.AreaName + "售后维修点";
+}
+
 <div class="wrap subnav">
     当前位置：
     <a href="/">品牌手机维修</a>
     &gt;
-    <a href="/list/@ViewBag.CityName/">@ViewBag.CityName 售后维修点</a>
+    @{
+        <a href="/list/@ViewBag.CityName/">@cityTip</a>
+    }
     @if (!string.IsNullOrEmpty(ViewBag.AreaName))
     {
-        new HtmlString(">");
-        <a href="@ViewBag.AreaName/">@ViewBag.AreaName 售后维修点</a>
+        var gt = new HtmlString(">");
+        @gt<a href="@ViewBag.AreaName/">@areaTip </a>
     }
 </div>
 
@@ -29,9 +36,9 @@
 {
     foreach (CityBrandModel model2 in ViewBag.CityList)
     {
-        var cbName = ViewBag.CityName + model2.BrandName;
+        var cbName = ViewBag.CityName + ViewBag.AreaName + model2.BrandName + "手机维修点";
         <div class="wrap hdlist">
-            <h2><a href="">@cbName 手机维修点</a></h2>
+            <h2><a href="">@cbName</a></h2>
         </div>
         <div class="wrap">
             <div class="flex" style="background:white;">

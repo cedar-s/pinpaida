@@ -55,7 +55,7 @@ namespace Pinpaida.Web
             routes.MapRoute(
                 name: "city-1",
                 url: "list/{city}/{area}",
-                defaults: new { controller = "City", action = "CityIndex1", city = UrlParameter.Optional, area = UrlParameter.Optional }
+                defaults: new { controller = "City", action = "CityIndex", city = UrlParameter.Optional, area = UrlParameter.Optional }
             );
             //搜索
             routes.MapRoute(

@@ -417,7 +417,7 @@ a {
         color: #f60;
         margin: 15px 0;
         font-size: 18px;
-        max-width:150px;
+        max-width: 150px;
     }
 
 .side {
@@ -464,9 +464,27 @@ a {
     padding: 20px;
     height: 200px;
 }
+.search_null {
+    width: 760px;
+    height: 150px;
+    padding: 55px 0 0 100px;
+    background: url(/res/icon_warning.png) 33px 46px no-repeat;
+    color: #888888;
+}
+    .search_null .txt {
+        font-size: 16px;
+        margin-bottom: 35px;
+    }
 
+    .search_null .search_null li {
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
 
 .PagerView {
+    margin-top: 16px;
     font-size: 12px;
     text-align: right;
     line-height: 100%;
