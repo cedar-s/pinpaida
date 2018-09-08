@@ -1,4 +1,5 @@
-﻿using Pinpaida.DataAccess;
+﻿using Pinpaida.Common;
+using Pinpaida.DataAccess;
 using Pinpaida.DataAccess.Stores;
 using Pinpaida.Entity.Entity;
 using System;
@@ -21,7 +22,12 @@ namespace Pinpaida.Web.Controllers
 
             ViewData["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
             ViewData["Runtime"] = isMono ? "Mono" : ".NET";
-            var city = "";
+            var ipCity = IPHelper.GetIPCitys();
+            var city = Hz2PyHelper.Convert(ipCity, Encoding.UTF8)?.ToLower();
+            if (city == "weizhi" || city == "neiwangip")
+            {
+                city = "suzhou";
+            }
             var request = new StoreSearchRequest
             {
                 City = city,
@@ -47,19 +53,20 @@ namespace Pinpaida.Web.Controllers
         {
             var model = StoresAccess.GetStoresDetail(id);
             ViewBag.store = model;
-            ViewBag.Brand = BrandList.GetModel(model.brand);
+            ViewBag.BrandModel = BrandList.GetModel(model.brand);
+            ViewBag.brand = ViewBag.BrandModel.Py;
             var city = model.cityPy;
             var request = new StoreSearchRequest
             {
                 City = city,
-                Brand = ViewBag.Brand.Py,
+                Brand = ViewBag.BrandModel.Py,
                 PageSize = 4,
             };
             var list = new List<StoreSearchModel>();
             var data = StoresAccess.GetStoreList(request);
             if (data != null && data.Any())
             {
-                data = data.Take(request.PageSize).ToList();
+                data = data.Where(x => x.Id != id).Take(request.PageSize).ToList();
                 list = StoresAccess.ConvertList(data);
             }
             ViewBag.List = list;

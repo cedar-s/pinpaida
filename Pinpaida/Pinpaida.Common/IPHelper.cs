@@ -12,6 +12,48 @@ namespace Pinpaida.Common
     public static class IPHelper
     {
         /// <summary>
+        /// 根据IP淘宝api获取城市
+        /// </summary>
+        /// <param name="strIP"></param>
+        /// <returns></returns>
+        public static string GetIPCitys()
+        {
+            try
+            {
+                string strIP = GetHostAddress();
+                string Url = "http://ip.taobao.com/service/getIpInfo.php?ip=" + strIP + "";
+
+                System.Net.WebRequest wReq = System.Net.WebRequest.Create(Url);
+                wReq.Timeout = 2000;
+                System.Net.WebResponse wResp = wReq.GetResponse();
+                System.IO.Stream respStream = wResp.GetResponseStream();
+                using (System.IO.StreamReader reader = new System.IO.StreamReader(respStream))
+                {
+                    string jsonText = reader.ReadToEnd();
+                    JObject ja = (JObject)JsonConvert.DeserializeObject(jsonText);
+                    if (ja["code"].ToString() == "0")
+                    {
+                        string c = ja["data"]["city"].ToString();
+                        int ci = c.IndexOf('市');
+                        if (ci != -1)
+                        {
+                            c = c.Remove(ci, 1);
+                        }
+                        return c;
+                    }
+                    else
+                    {
+                        return "未知";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return ("未知");
+            }
+        }
+
+        /// <summary>
         /// 获取客户端IP地址
         /// </summary>
         /// <returns></returns>

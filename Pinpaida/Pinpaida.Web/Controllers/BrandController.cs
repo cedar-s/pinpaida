@@ -1,8 +1,10 @@
-﻿using Pinpaida.DataAccess.Stores;
+﻿using Pinpaida.Common;
+using Pinpaida.DataAccess.Stores;
 using Pinpaida.Entity.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
@@ -47,14 +49,14 @@ namespace Pinpaida.Web.Controllers
         /// <returns></returns>
         public RedirectResult Search(int brand, string word)
         {
-            var areaModel = StoresAccess.GetAreaFilter(word);
+            var py = Hz2PyHelper.Convert(word, Encoding.UTF8)?.ToLower();
+            var areaModel = StoresAccess.GetAreaFilter(py);
             var brandList = new List<string> { "apple", "huawei", "xiaomi", "oppo", "vivo" };
             var brandName = StoresAccess.GetBrandString(brand);
             var isBrand = brandList.IndexOf(brandName) >= 0;
             var url = isBrand ? $"{brandName}/" : "list/";
             if (areaModel != null && areaModel.AreaType > 0)
             {//带区域的
-                word = string.Empty;
                 if (areaModel.AreaType == 1)
                 {
                     url += $"{areaModel.CityNamePy}/";

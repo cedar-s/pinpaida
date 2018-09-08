@@ -153,7 +153,7 @@ namespace Pinpaida.DataAccess.Stores
             var areaModel = new AreaFilteMobdel();
             StringBuilder getsql = new StringBuilder();
             getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
-            getsql.Append($" AND  ( cityPy = '{word}' or city ='{word}')  Limit 1; ");
+            getsql.Append($" AND  ( cityPy = '{word}' )  Limit 1; ");
             var dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
             var model = GetStoresModel(dt);
             if (model != null && model.Id > 0)
@@ -170,7 +170,7 @@ namespace Pinpaida.DataAccess.Stores
             }
             getsql = new StringBuilder();
             getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
-            getsql.Append($" AND  ( districtPy = '{word}' or district='{word}')  Limit 1; ");
+            getsql.Append($" AND  ( districtPy = '{word}')  Limit 1; ");
             dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
             model = GetStoresModel(dt);
             if (model != null && model.Id > 0)
