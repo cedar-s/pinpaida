@@ -22,15 +22,14 @@ namespace Pinpaida.Web.Controllers
 
             ViewData["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
             ViewData["Runtime"] = isMono ? "Mono" : ".NET";
-            var ipCity = IPHelper.GetIPCitys();
-            var city = Hz2PyHelper.Convert(ipCity, Encoding.UTF8)?.ToLower();
-            if (city == "weizhi" || city == "neiwangip")
+            var ipCity = IPHelper.GetIPCitys()?.ToLower();
+            if (string.IsNullOrEmpty(ipCity) || ipCity == "未知" || ipCity == "内网ip")
             {
-                city = "suzhou";
+                ipCity = "苏州";
             }
             var request = new StoreSearchRequest
             {
-                City = city,
+                City = ipCity,
                 PageSize = 4,
             };
             var list = new List<StoreSearchModel>();
@@ -55,10 +54,9 @@ namespace Pinpaida.Web.Controllers
             ViewBag.store = model;
             ViewBag.BrandModel = BrandList.GetModel(model.brand);
             ViewBag.brand = ViewBag.BrandModel.Py;
-            var city = model.cityPy;
             var request = new StoreSearchRequest
             {
-                City = city,
+                City = model.city,
                 Brand = ViewBag.BrandModel.Py,
                 PageSize = 4,
             };

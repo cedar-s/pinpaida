@@ -31,11 +31,11 @@ namespace Pinpaida.DataAccess.Stores
                 }
                 if (!string.IsNullOrEmpty(request.City))
                 {
-                    getsql.Append($" AND  cityPy = '{request.City}' ");
+                    getsql.Append($" AND  city = '{request.City}' ");
                 }
                 if (!string.IsNullOrEmpty(request.Area))
                 {
-                    getsql.Append($" AND  statePy = '{request.Area}' ");
+                    getsql.Append($" AND  state = '{request.Area}' ");
                 }
                 if (!string.IsNullOrEmpty(request.SearchKey))
                 {
@@ -153,7 +153,7 @@ namespace Pinpaida.DataAccess.Stores
             var areaModel = new AreaFilteMobdel();
             StringBuilder getsql = new StringBuilder();
             getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
-            getsql.Append($" AND  ( cityPy = '{word}' )  Limit 1; ");
+            getsql.Append($" AND  ( city = '{word}' )  Limit 1; ");
             var dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
             var model = GetStoresModel(dt);
             if (model != null && model.Id > 0)
@@ -170,7 +170,7 @@ namespace Pinpaida.DataAccess.Stores
             }
             getsql = new StringBuilder();
             getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
-            getsql.Append($" AND  ( districtPy = '{word}')  Limit 1; ");
+            getsql.Append($" AND  ( district = '{word}')  Limit 1; ");
             dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
             model = GetStoresModel(dt);
             if (model != null && model.Id > 0)

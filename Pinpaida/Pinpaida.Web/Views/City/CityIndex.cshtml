@@ -3,11 +3,11 @@
     当前位置：
     <a href="/">品牌手机维修</a>
     &gt;
-    <a href="/list/@ViewBag.CityPy/">@ViewBag.CityName 售后维修点</a>
-    @if (!string.IsNullOrEmpty(ViewBag.AreaPy))
+    <a href="/list/@ViewBag.CityName/">@ViewBag.CityName 售后维修点</a>
+    @if (!string.IsNullOrEmpty(ViewBag.AreaName))
     {
         new HtmlString(">");
-        <a href="@ViewBag.AreaPy/">@ViewBag.AreaName 售后维修点</a>
+        <a href="@ViewBag.AreaName/">@ViewBag.AreaName 售后维修点</a>
     }
 </div>
 
@@ -18,7 +18,7 @@
             区域：
             @foreach (AreaFilteMobdel am in ViewBag.AreaList)
             {
-                <a href="/list/@am.CityNamePy/">@am.CityName</a>
+                <a href="/list/@am.CityName/">@am.CityName</a>
             }
             @*<a class="curr" href="">北京</a>*@
         </div>

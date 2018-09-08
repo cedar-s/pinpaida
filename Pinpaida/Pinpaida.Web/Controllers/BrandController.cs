@@ -54,8 +54,7 @@ namespace Pinpaida.Web.Controllers
         /// <returns></returns>
         public RedirectResult Search(int brand, string word)
         {
-            var py = Hz2PyHelper.Convert(word, Encoding.UTF8)?.ToLower();
-            var areaModel = StoresAccess.GetAreaFilter(py);
+            var areaModel = StoresAccess.GetAreaFilter(word);
             var brandList = new List<string> { "apple", "huawei", "xiaomi", "oppo", "vivo" };
             var brandName = StoresAccess.GetBrandString(brand);
             var isBrand = brandList.IndexOf(brandName) >= 0;
@@ -64,11 +63,11 @@ namespace Pinpaida.Web.Controllers
             {//带区域的
                 if (areaModel.AreaType == 1)
                 {
-                    url += $"{areaModel.CityNamePy}/";
+                    url += $"{areaModel.CityName}/";
                 }
                 else
                 {
-                    url += $"{areaModel.CityNamePy}/{areaModel.AreaNamePy}/";
+                    url += $"{areaModel.CityName}/{areaModel.AreaName}/";
                 }
             }
             else
