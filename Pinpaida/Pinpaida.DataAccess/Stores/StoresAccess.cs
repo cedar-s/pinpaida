@@ -19,8 +19,6 @@ namespace Pinpaida.DataAccess.Stores
         public static List<StoresModel> GetStoreList(StoreSearchRequest request)
         {
             var list = new List<StoresModel>();
-            request.PageIndex = request.PageIndex <= 0 ? 1 : request.PageIndex;
-            request.PageSize = request.PageSize <= 0 || request.PageSize >= 50 ? 10 : request.PageSize;
             var bi = GetBrandInt(request.Brand);
             DataTable dt = new DataTable();
             try
@@ -43,8 +41,8 @@ namespace Pinpaida.DataAccess.Stores
                 {
                     getsql.Append($" AND  storeName Like '%{request.SearchKey}%' ");
                 }
-                getsql.Append($" limit {(request.PageIndex - 1) * request.PageSize } , {request.PageSize}; ");
 
+                getsql.Append($" Order by sortby asc ");
                 dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
                 list = GetStoresModelList(dt);
             }
@@ -53,6 +51,16 @@ namespace Pinpaida.DataAccess.Stores
 
             }
             return list;
+        }
+        /// <summary>
+        /// 门店列表，DataTable转Model
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        private static StoresModel GetStoresModel(DataTable dt)
+        {
+            var list = GetStoresModelList(dt);
+            return list?.FirstOrDefault();
         }
         /// <summary>
         /// 门店列表，DataTable转List
@@ -94,7 +102,7 @@ namespace Pinpaida.DataAccess.Stores
                         state = ConvertHelper.ToString(dr["state"]),
                         status = ConvertHelper.ToInt32(dr["status"]),
                         storeAddress = ConvertHelper.ToString(dr["storeAddress"]),
-                        storeBadges = ConvertHelper.ToString(dr["storeBadges"]),
+                        storeBadges = ConvertHelper.ToInt32(dr["storeBadges"]),
                         storeEmail = ConvertHelper.ToString(dr["storeEmail"]),
                         storeID = ConvertHelper.ToString(dr["storeID"]),
                         storeImage = ConvertHelper.ToString(dr["storeImage"]),
@@ -114,29 +122,70 @@ namespace Pinpaida.DataAccess.Stores
         /// </summary>
         /// <param name="brand"></param>
         /// <returns></returns>
-        private static int GetBrandInt(string brand)
+        public static int GetBrandInt(string brand)
         {
             var bi = 0;
             brand = brand?.ToLower() ?? String.Empty;
-            switch (brand)
-            {
-                case "apple":
-                    bi = 1;
-                    break;
-                case "huawei":
-                    bi = 2;
-                    break;
-                case "xiaomi":
-                    bi = 4;
-                    break;
-                case "oppo":
-                    bi = 5;
-                    break;
-                case "vivo":
-                    bi = 6;
-                    break;
-            }
+            bi = BrandList.List.FirstOrDefault(x => x.Py == brand)?.Id ?? 0;
             return bi;
+        }
+
+        /// <summary>
+        /// 1-苹果，2-华为，3-三星，4-小米，5-vivo，6-oppo，
+        /// 7-魅族，其他按组合来12表示苹果华为，16表示苹果vivo
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        public static string GetBrandString(int brand)
+        {
+            var bi = string.Empty;
+            bi = BrandList.List.FirstOrDefault(x => x.Id == brand)?.Py ?? string.Empty;
+            return bi;
+        }
+
+        /// <summary>
+        /// 关键词匹配区域
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        public static AreaFilteMobdel GetAreaFilter(string word)
+        {
+            var areaModel = new AreaFilteMobdel();
+            StringBuilder getsql = new StringBuilder();
+            getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
+            getsql.Append($" AND  ( cityPy = '{word}' or city='{word}')  Limit 1; ");
+            var dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
+            var model = GetStoresModel(dt);
+            if (model != null && model.Id > 0)
+            {
+                areaModel = new AreaFilteMobdel
+                {
+                    AreaName = string.Empty,
+                    AreaNamePy = string.Empty,
+                    CityName = model.city,
+                    CityNamePy = model.cityPy,
+                    AreaType = 1
+                };
+                return areaModel;
+            }
+            getsql = new StringBuilder();
+            getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
+            getsql.Append($" AND  ( districtPy = '{word}' or district='{word}')  Limit 1; ");
+            dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
+            model = GetStoresModel(dt);
+            if (model != null && model.Id > 0)
+            {
+                areaModel = new AreaFilteMobdel
+                {
+                    AreaName = model.district,
+                    AreaNamePy = model.districtPy,
+                    CityName = model.city,
+                    CityNamePy = model.cityPy,
+                    AreaType = 2
+                };
+                return areaModel;
+            }
+            return null;
         }
 
         /// <summary>

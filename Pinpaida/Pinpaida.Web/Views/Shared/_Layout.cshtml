@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="/res/base.css" rel="stylesheet" type="text/css" />
+    @RenderSection("head", false)
 </head>
 <body>
     <div class="topbar">
@@ -13,12 +14,24 @@
             </div>
             <div class="nav ml20">
                 <ul>
-                    <li><a href="" class="current" title="">首页</a></li>
-                    <li><a href="/apple/" title="">苹果</a></li>
-                    <li><a href="/huawei/" title="">华为</a></li>
-                    <li><a href="/xiaomi/" title="">小米</a></li>
-                    <li><a href="/oppo/" title="">OPPO</a></li>
-                    <li><a href="/vivo/" title="">VIVO</a></li>
+                    @{
+                        var appleCurrent = ViewBag.brand == "apple" ? "current" : string.Empty;
+                        var huaweiCurrent = ViewBag.brand == "huawei" ? "current" : string.Empty;
+                        var xiaomiCurrent = ViewBag.brand == "xiaomi" ? "current" : string.Empty;
+                        var oppoCurrent = ViewBag.brand == "oppo" ? "current" : string.Empty;
+                        var vivoCurrent = ViewBag.brand == "vivo" ? "current" : string.Empty;
+                        var indexCurrent = appleCurrent == huaweiCurrent
+                            && xiaomiCurrent == oppoCurrent
+                            && vivoCurrent == string.Empty ? "current" : string.Empty;
+                        <li>
+                            <a href="/" class="@indexCurrent" title="">首页</a>
+                        </li>
+                        <li><a href="/apple/" class="@appleCurrent" title="">苹果</a></li>
+                        <li><a href="/huawei/" class="@huaweiCurrent" title="">华为</a></li>
+                        <li><a href="/xiaomi/" class="@xiaomiCurrent" title="">小米</a></li>
+                        <li><a href="/oppo/" class="@oppoCurrent" title="">OPPO</a></li>
+                        <li><a href="/vivo/" class="@vivoCurrent" title="">VIVO</a></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -33,5 +46,6 @@
     </div>
     <script type="text/javascript" src="/res/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/res/base.js"></script>
+    @RenderSection("foot", false)
 </body>
 </html>
