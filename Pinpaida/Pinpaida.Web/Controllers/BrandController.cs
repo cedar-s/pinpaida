@@ -27,30 +27,15 @@ namespace Pinpaida.Web.Controllers
                 PageSize = 4,
                 SearchKey = word
             };
-            var areaList = new List<AreaFilteMobdel>();
+            ViewBag.AreaList = HotCityList.List;
             var list = new List<StoreSearchModel>();
             var data = StoresAccess.GetStoreList(request);
             if (data != null && data.Any())
             {
-                data.ForEach(x =>
-                {
-                    var a = new AreaFilteMobdel
-                    {
-                        AreaType = 1,
-                        CityName = x.city,
-                        CityNamePy = x.cityPy
-                    };
-                    var a2 = areaList.FirstOrDefault(al => al.CityNamePy == x.cityPy);
-                    if (a2 == null)
-                    {
-                        areaList.Add(a);
-                    }
-                });
                 data = data.Take(request.PageSize).ToList();
-                list = ConvertList(data);
+                list = StoresAccess.ConvertList(data);
             }
             ViewBag.List = list;
-            ViewBag.AreaList = areaList;
             return View();
         }
 
@@ -99,34 +84,9 @@ namespace Pinpaida.Web.Controllers
             if (data != null && data.Any())
             {
                 data = data.Take(request.PageSize).ToList();
-                list = ConvertList(data);
+                list = StoresAccess.ConvertList(data);
             }
             return Json(list, JsonRequestBehavior.AllowGet);
-        }
-        /// <summary>
-        /// List转获
-        /// </summary>
-        /// <param name="data"></param>
-        private static List<StoreSearchModel> ConvertList(List<Entity.Model.StoresModel> data)
-        {
-            var list = new List<StoreSearchModel>();
-            if (data != null && data.Any())
-            {
-                list.AddRange(data.Select(x => new StoreSearchModel
-                {
-                    apptSchedulerInd = x.apptSchedulerInd,
-                    brand = x.brand,
-                    brandName = "",
-                    Id = x.Id,
-                    MainImage = x.mainImage,
-                    openTime = x.openTime,
-                    phoneNumber = x.phoneNumber,
-                    storeAddress = x.storeAddress,
-                    storeBadges = x.storeBadges,
-                    StoreName = x.storeName
-                }));
-            }
-            return list;
         }
 
         #region 列表页
