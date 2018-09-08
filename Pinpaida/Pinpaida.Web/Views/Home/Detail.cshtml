@@ -100,7 +100,10 @@
         </div>
     </div>
     <div class="wrap nearstore">
-        <h2>苏州其他苹果维修点推荐</h2>
+        @{
+            var title = ViewBag.store.city + "其他" + ViewBag.Brand.Name + "维修点推荐";
+            <h2>@title</h2>
+        }
         <div class="storebox">
             @if (ViewBag.List != null && ViewBag.List.Count > 0)
             {
@@ -109,11 +112,11 @@
                     var stId = model3.Id;
                     var name = model3.StoreName;
                     var mainImageAll = model3.MainImageAll;
-                    var title = model3.city + model3.brandName + "维修点";
+                    var tip = model3.city + model3.brandName + "维修点";
                     <div class="storeitem" data-id="@stId">
                         <a href="#" title=""><img src="@mainImageAll" alt="@name" /></a>
                         <h3><a href="" title="@name">@name</a></h3>
-                        <a class="gray" href="">@title</a>
+                        <a class="gray" href="">@tip</a>
                     </div>
                 }
             }

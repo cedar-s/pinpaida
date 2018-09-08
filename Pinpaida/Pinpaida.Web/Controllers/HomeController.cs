@@ -45,11 +45,14 @@ namespace Pinpaida.Web.Controllers
         /// <returns></returns>
         public ActionResult Detail(int id)
         {
-            ViewBag.store = StoresAccess.GetStoresDetail(id);
-            var city = ViewBag.store.cityPy;
+            var model = StoresAccess.GetStoresDetail(id);
+            ViewBag.store = model;
+            ViewBag.Brand = BrandList.GetModel(model.brand);
+            var city = model.cityPy;
             var request = new StoreSearchRequest
             {
                 City = city,
+                Brand = ViewBag.Brand.Py,
                 PageSize = 4,
             };
             var list = new List<StoreSearchModel>();
