@@ -22,10 +22,13 @@
         </div>
         <div class="hotcity mt20">
             热门城市：
-            <a href="" title="">北京</a>
-            <a href="" title="">上海</a>
-            <a href="" title="">广州</a>
-            <a href="" title="">深圳</a>
+            @if (ViewBag.AreaList != null && ViewBag.AreaList.Count > 0)
+            {
+                foreach (AreaFilteMobdel am in ViewBag.AreaList)
+                {
+                    <a href="/list/@am.CityName/">@am.CityName</a>
+                }
+            }
         </div>
     </div>
 </div>
@@ -42,8 +45,8 @@
                 var mainImageAll = model3.MainImageAll;
                 var title = model3.city + model3.brandName + "维修点";
                 <div class="storeitem" data-id="@stId">
-                    <a href="#" title=""><img src="@mainImageAll" alt="@name" /></a>
-                    <h3><a href="" title="@name">@name</a></h3>
+                    <a href="/home/detail/?id=@stId" title=""><img src="@mainImageAll" alt="@name" /></a>
+                    <h3><a href="/home/detail/?id=@stId" title="@name">@name</a></h3>
                     <a class="gray" href="">@title</a>
                 </div>
             }

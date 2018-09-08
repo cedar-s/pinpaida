@@ -417,6 +417,7 @@ a {
         color: #f60;
         margin: 15px 0;
         font-size: 18px;
+        max-width:150px;
     }
 
 .side {

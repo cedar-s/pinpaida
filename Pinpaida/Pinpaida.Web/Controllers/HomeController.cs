@@ -40,6 +40,7 @@ namespace Pinpaida.Web.Controllers
                 list = StoresAccess.ConvertList(data);
             }
             ViewBag.List = list;
+            ViewBag.AreaList = HotCityList.List;
             return View();
         }
 
