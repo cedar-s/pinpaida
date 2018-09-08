@@ -53,6 +53,16 @@ namespace Pinpaida.DataAccess.Stores
             return list;
         }
         /// <summary>
+        /// 门店列表，DataTable转Model
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        private static StoresModel GetStoresModel(DataTable dt)
+        {
+            var list = GetStoresModelList(dt);
+            return list?.FirstOrDefault();
+        }
+        /// <summary>
         /// 门店列表，DataTable转List
         /// </summary>
         /// <param name="dt"></param>
@@ -112,7 +122,7 @@ namespace Pinpaida.DataAccess.Stores
         /// </summary>
         /// <param name="brand"></param>
         /// <returns></returns>
-        private static int GetBrandInt(string brand)
+        public static int GetBrandInt(string brand)
         {
             var bi = 0;
             brand = brand?.ToLower() ?? String.Empty;
@@ -135,6 +145,82 @@ namespace Pinpaida.DataAccess.Stores
                     break;
             }
             return bi;
+        }
+
+
+        /// <summary>
+        /// 1-苹果，2-华为，3-三星，4-小米，5-vivo，6-oppo，
+        /// 7-魅族，其他按组合来12表示苹果华为，16表示苹果vivo
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        public static string GetBrandString(int brand)
+        {
+            var bi = string.Empty;
+            switch (brand)
+            {
+                case 1:
+                    bi = "apple";
+                    break;
+                case 2:
+                    bi = "huawei";
+                    break;
+                case 4:
+                    bi = "xiaomi";
+                    break;
+                case 5:
+                    bi = "oppo";
+                    break;
+                case 6:
+                    bi = "vivo";
+                    break;
+            }
+            return bi;
+        }
+
+        /// <summary>
+        /// 关键词匹配区域
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        public static AreaFilteMobdel GetAreaFilter(string word)
+        {
+            var areaModel = new AreaFilteMobdel();
+            StringBuilder getsql = new StringBuilder();
+            getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
+            getsql.Append($" AND  ( cityPy = '{word}' or city='{word}')  Limit 1; ");
+            var dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
+            var model = GetStoresModel(dt);
+            if (model != null && model.Id > 0)
+            {
+                areaModel = new AreaFilteMobdel
+                {
+                    AreaName = string.Empty,
+                    AreaNamePy = string.Empty,
+                    CityName = model.city,
+                    CityNamePy = model.cityPy,
+                    AreaType = 1
+                };
+                return areaModel;
+            }
+            getsql = new StringBuilder();
+            getsql.Append(" SELECT  * FROM  stores  WHERE  1=1 ");
+            getsql.Append($" AND  ( districtPy = '{word}' or district='{word}')  Limit 1; ");
+            dt = MySqlHelper.Query(getsql.ToString())?.Tables[0];
+            model = GetStoresModel(dt);
+            if (model != null && model.Id > 0)
+            {
+                areaModel = new AreaFilteMobdel
+                {
+                    AreaName = model.district,
+                    AreaNamePy = model.districtPy,
+                    CityName = model.city,
+                    CityNamePy = model.cityPy,
+                    AreaType = 2
+                };
+                return areaModel;
+            }
+            return null;
         }
     }
 }

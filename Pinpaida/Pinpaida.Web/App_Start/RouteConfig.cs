@@ -38,7 +38,12 @@ namespace Pinpaida.Web
                 defaults: new { controller = "Brand", action = "BrandIndex", brand = UrlParameter.Optional, city = UrlParameter.Optional, area = UrlParameter.Optional },
                 constraints: new { brand = "^apple|huawei|xiaomi|oppo|vivo$" }
             );
-
+            //列表
+            routes.MapRoute(
+                name: "list",
+                url: "list",
+                defaults: new { controller = "Brand", action = "BrandIndex" }
+            );
             //城市首页
             routes.MapRoute(
                 name: "city",
@@ -52,6 +57,13 @@ namespace Pinpaida.Web
                 url: "list/{city}/{area}",
                 defaults: new { controller = "City", action = "CityIndex1", city = UrlParameter.Optional, area = UrlParameter.Optional }
             );
+            //搜索
+            routes.MapRoute(
+                name: "search",
+                url: "search",
+                defaults: new { controller = "Brand", action = "Search" }
+            );
+           
 
             //商圈页暂不开放
             routes.MapRoute(

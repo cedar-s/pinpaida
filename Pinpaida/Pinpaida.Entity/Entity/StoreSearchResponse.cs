@@ -38,4 +38,28 @@ namespace Pinpaida.Entity.Entity
 
 
     }
+
+    public class AreaFilteMobdel
+    {
+        /// <summary>
+        /// 1 城市  2 区县
+        /// </summary>
+        public int AreaType { get; set; }
+        /// <summary>
+        /// 城市拼音
+        /// </summary>
+        public string CityNamePy { get; set; }
+        /// <summary>
+        /// 城市名称
+        /// </summary>
+        public string CityName { get; set; }
+        /// <summary>
+        /// 区拼音
+        /// </summary>
+        public string AreaNamePy { get; set; }
+        /// <summary>
+        /// 区名称
+        /// </summary>
+        public string AreaName { get; set; }
+    }
 }
