@@ -205,5 +205,31 @@ namespace Pinpaida.DataAccess.Stores
             }
             return sm;
         }
+
+        /// <summary>
+        /// List转获
+        /// </summary>
+        /// <param name="data"></param>
+        public static List<StoreSearchModel> ConvertList(List<Entity.Model.StoresModel> data)
+        {
+            var list = new List<StoreSearchModel>();
+            if (data != null && data.Any())
+            {
+                list.AddRange(data.Select(x => new StoreSearchModel
+                {
+                    apptSchedulerInd = x.apptSchedulerInd,
+                    brand = x.brand,
+                    brandName = "",
+                    Id = x.Id,
+                    MainImage = x.mainImage,
+                    openTime = x.openTime,
+                    phoneNumber = x.phoneNumber,
+                    storeAddress = x.storeAddress,
+                    storeBadges = x.storeBadges,
+                    StoreName = x.storeName
+                }));
+            }
+            return list;
+        }
     }
 }

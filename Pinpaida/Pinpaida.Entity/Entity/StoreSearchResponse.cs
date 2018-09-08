@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Pinpaida.Entity.Entity
 {
-    public class StoreSearchResponse
+    /// <summary>
+    /// 城市数据
+    /// </summary>
+    public class CityBrandModel
     {
+        public int Brand { get; set; }
+        public string BrandName { get; set; }
+
         public List<StoreSearchModel> List { get; set; }
     }
 
@@ -72,8 +78,22 @@ namespace Pinpaida.Entity.Entity
             new BrandModel{Id=4,Py="xiaomi",Name="小米" },
             new BrandModel{Id=5,Py="oppo",Name="OPPO" },
             new BrandModel{Id=6,Py="vivo",Name="VIVO" },
-    };
-
+        };
+    }
+    /// <summary>
+    /// 热门城市
+    /// </summary>
+    public static class HotCityList
+    {
+        public static List<AreaFilteMobdel> List = new List<AreaFilteMobdel>
+        {
+            new AreaFilteMobdel{ CityName = "北京", CityNamePy ="beijing",AreaType = 1 },
+            new AreaFilteMobdel{ CityName = "上海", CityNamePy ="shanghai", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "广州", CityNamePy ="guangzhou", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "深圳", CityNamePy ="shenzhen", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "杭州", CityNamePy ="杭州", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "苏州", CityNamePy ="苏州", AreaType = 1}
+        };
     }
 
     public class BrandModel
