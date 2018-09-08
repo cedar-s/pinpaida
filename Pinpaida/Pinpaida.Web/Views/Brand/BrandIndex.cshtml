@@ -32,6 +32,7 @@
                 {
                     foreach (StoreSearchModel model2 in ViewBag.List)
                     {
+                        var stId = model2.Id;
                         var name = model2.StoreName;
                         var mainImage = model2.MainImage;
                         var storeBadges = model2.storeBadges;
@@ -39,18 +40,19 @@
                         var openTime = model2.openTime;
                         var phoneNumber = model2.phoneNumber;
                         var storeAddress = model2.storeAddress;
-                        var icoOffical1 = storeBadges == 5 ? "ico-offical1" : "";
-                        var icoCommend = storeBadges == 3 ? "ico-commend" : "";
-                        var icoOffical2 = storeBadges == 1 ? "ico-offical2" : "";
-                        var icoYuyue = apptSchedulerInd == 1 ? "ico-yuyue" : "";
-                        var icoUnknown = storeBadges == 9 ? "ico-unknown" : "";
+                        storeBadges = storeBadges == 0 ? 1 : storeBadges;
+                        var icoOffical1 = storeBadges == 5 ? "ico-offical1" : "none";
+                        var icoCommend = storeBadges == 3 ? "ico-commend" : "none";
+                        var icoOffical2 = storeBadges == 1 ? "ico-offical2" : "none";
+                        var icoYuyue = apptSchedulerInd == 1 ? "ico-yuyue" : "none";
+                        var icoUnknown = storeBadges == 9 ? "ico-unknown" : "none";
                         <div class="storeitem">
                             <div class="thumb">
                                 <a href="#" title=""><img src='..@mainImage' alt="@name" /></a>
                             </div>
                             <div class="meta">
                                 <h2>
-                                    <a href="" title="">
+                                    <a href="" title="" data-id="@stId">
                                         @name
                                     </a>
                                 </h2>
