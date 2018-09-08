@@ -126,27 +126,9 @@ namespace Pinpaida.DataAccess.Stores
         {
             var bi = 0;
             brand = brand?.ToLower() ?? String.Empty;
-            switch (brand)
-            {
-                case "apple":
-                    bi = 1;
-                    break;
-                case "huawei":
-                    bi = 2;
-                    break;
-                case "xiaomi":
-                    bi = 4;
-                    break;
-                case "oppo":
-                    bi = 5;
-                    break;
-                case "vivo":
-                    bi = 6;
-                    break;
-            }
+            bi = BrandList.List.FirstOrDefault(x => x.Py == brand)?.Id ?? 0;
             return bi;
         }
-
 
         /// <summary>
         /// 1-苹果，2-华为，3-三星，4-小米，5-vivo，6-oppo，
@@ -157,24 +139,7 @@ namespace Pinpaida.DataAccess.Stores
         public static string GetBrandString(int brand)
         {
             var bi = string.Empty;
-            switch (brand)
-            {
-                case 1:
-                    bi = "apple";
-                    break;
-                case 2:
-                    bi = "huawei";
-                    break;
-                case 4:
-                    bi = "xiaomi";
-                    break;
-                case 5:
-                    bi = "oppo";
-                    break;
-                case 6:
-                    bi = "vivo";
-                    break;
-            }
+            bi = BrandList.List.FirstOrDefault(x => x.Id == brand)?.Py ?? string.Empty;
             return bi;
         }
 

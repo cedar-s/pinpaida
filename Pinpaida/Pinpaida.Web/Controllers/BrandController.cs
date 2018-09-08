@@ -17,6 +17,8 @@ namespace Pinpaida.Web.Controllers
             ViewData["city"] = city;
             ViewData["area"] = area;
             ViewData["word"] = word;
+            ViewBag.BrandModel = BrandList.List.FirstOrDefault(x => x.Py == brand);
+            ViewBag.BrandName = ViewBag.BrandModel?.Name ?? string.Empty;
             var request = new StoreSearchRequest
             {
                 Area = area,
@@ -25,14 +27,30 @@ namespace Pinpaida.Web.Controllers
                 PageSize = 4,
                 SearchKey = word
             };
+            var areaList = new List<AreaFilteMobdel>();
             var list = new List<StoreSearchModel>();
             var data = StoresAccess.GetStoreList(request);
             if (data != null && data.Any())
             {
+                data.ForEach(x =>
+                {
+                    var a = new AreaFilteMobdel
+                    {
+                        AreaType = 1,
+                        CityName = x.city,
+                        CityNamePy = x.cityPy
+                    };
+                    var a2 = areaList.FirstOrDefault(al => al.CityNamePy == x.cityPy);
+                    if (a2 == null)
+                    {
+                        areaList.Add(a);
+                    }
+                });
                 data = data.Take(request.PageSize).ToList();
                 list = ConvertList(data);
             }
             ViewBag.List = list;
+            ViewBag.AreaList = areaList;
             return View();
         }
 

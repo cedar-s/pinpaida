@@ -62,4 +62,25 @@ namespace Pinpaida.Entity.Entity
         /// </summary>
         public string AreaName { get; set; }
     }
+
+    public static class BrandList
+    {
+        public static List<BrandModel> List = new List<BrandModel>
+        {
+            new BrandModel{Id=1,Py="apple",Name="苹果" },
+            new BrandModel{Id=2,Py="huawei",Name="华为" },
+            new BrandModel{Id=4,Py="xiaomi",Name="小米" },
+            new BrandModel{Id=5,Py="oppo",Name="OPPO" },
+            new BrandModel{Id=6,Py="vivo",Name="VIVO" },
+    };
+
+    }
+
+    public class BrandModel
+    {
+        public int Id { get; set; }
+        public string Py { get; set; }
+        public string Name { get; set; }
+
+    }
 }

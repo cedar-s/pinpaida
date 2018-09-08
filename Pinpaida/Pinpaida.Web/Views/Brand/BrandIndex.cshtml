@@ -1,15 +1,25 @@
 ﻿@using Pinpaida.Entity.Entity;
 <div class="wrap subnav">
     当前位置：
-    <a href="#">品牌手机维修</a>
+    <a href="/">品牌手机维修</a>
     &gt;
-    <a href="#">苹果售后维修点</a>
+    <a href="/@ViewData["brand"]/"> @ViewBag.BrandName 售后维修点</a>
     &gt;
-    <a href="">北京 @ViewData["brand"] @ViewData["city"] @ViewData["area"] 售后维修点</a>
+    <a href=""> @ViewBag.BrandName@ViewData["city"]@ViewData["area"]售后维修点</a>
 </div>
 
 <div class="wrap searchtool">
-    <div class="line p20">区域：<a href="">北京</a><a class="curr" href="">北京</a><a href="">北京</a><a href="">北京</a><a href="">北京</a></div>
+    @if (ViewBag.AreaList != null && ViewBag.AreaList.Count > 0)
+    {
+        <div class="line p20">
+            区域：
+            @foreach (AreaFilteMobdel am in ViewBag.AreaList)
+            {
+                <a href="">@am.CityName</a>
+            }
+            @*<a class="curr" href="">北京</a>*@
+        </div>
+    }
 </div>
 <div class="wrap hdlist">
     <h1><a href="">pinpai北京手机维修点</a></h1>
