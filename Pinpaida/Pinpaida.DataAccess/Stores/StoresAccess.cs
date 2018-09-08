@@ -138,5 +138,23 @@ namespace Pinpaida.DataAccess.Stores
             }
             return bi;
         }
+
+        /// <summary>
+        /// 获取店铺详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static StoresModel GetStoresDetail(int id)
+        {
+            var sm = new StoresModel();
+            StringBuilder sql = new StringBuilder();
+            sql.AppendFormat(@"SELECT * FROM stores s where s.Id={0}", id);
+            DataTable dt = MySqlHelper.Query(sql.ToString())?.Tables[0];
+            var list= GetStoresModelList(dt);
+            if (list != null && list.Count > 0) {
+                sm = list[0];
+            }
+            return sm;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Pinpaida.DataAccess;
+using Pinpaida.DataAccess.Stores;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,8 +24,14 @@ namespace Pinpaida.Web.Controllers
             return View();
         }
               
-		public ActionResult Detail()
+        /// <summary>
+        /// 获取店铺详情页面
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+		public ActionResult Detail(int id)
         {
+            ViewBag.store = StoresAccess.GetStoresDetail(id);
             return View();
         }
     }
