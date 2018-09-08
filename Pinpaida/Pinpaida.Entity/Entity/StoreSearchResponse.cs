@@ -27,6 +27,8 @@ namespace Pinpaida.Entity.Entity
         public string StoreName { get; set; }
         /// <summary>主图 </summary>
         public string MainImage { get; set; }
+        /// <summary>主图 </summary>
+        public string MainImageAll { get; set; }
         /// <summary>品牌 </summary>
         public int brand { get; set; }
         /// <summary>品牌 </summary>
@@ -41,7 +43,10 @@ namespace Pinpaida.Entity.Entity
         public string phoneNumber { get; set; }
         /// <summary> 是否支持预约 </summary>
         public byte apptSchedulerInd { get; set; }
-
+        /// <summary> 城市 </summary>
+        public string city { get; set; }
+        /// <summary> 城市拼音 </summary>
+        public string cityPy { get; set; }
 
     }
 
@@ -76,9 +81,18 @@ namespace Pinpaida.Entity.Entity
             new BrandModel{Id=1,Py="apple",Name="苹果" },
             new BrandModel{Id=2,Py="huawei",Name="华为" },
             new BrandModel{Id=4,Py="xiaomi",Name="小米" },
-            new BrandModel{Id=5,Py="oppo",Name="OPPO" },
-            new BrandModel{Id=6,Py="vivo",Name="VIVO" },
+            new BrandModel{Id=5,Py="vivo",Name="VIVO" },
+            new BrandModel{Id=6,Py="oppo",Name="OPPO" },
         };
+
+        public static string GetName(int id)
+        {
+            return List.FirstOrDefault(x => x.Id == id)?.Name;
+        }
+        public static BrandModel GetModel(int id)
+        {
+            return List.FirstOrDefault(x => x.Id == id);
+        }
     }
     /// <summary>
     /// 热门城市
