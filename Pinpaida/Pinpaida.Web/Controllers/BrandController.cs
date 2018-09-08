@@ -11,17 +11,18 @@ namespace Pinpaida.Web.Controllers
 {
     public class BrandController : Controller
     {
-        public ActionResult BrandIndex(string brand, string city, string area,string key)
+        public ActionResult BrandIndex(string brand, string city, string area,string word)
         {
             ViewData["brand"] = brand;
             ViewData["city"] = city;
             ViewData["area"] = area;
+            ViewData["word"] = word;
             var request = new StoreSearchRequest {
                 Area=area,
                 Brand=brand,
                 City=city,
                 PageSize=4,
-                SearchKey= key
+                SearchKey= word
             };
             var list = new List<StoreSearchModel>();
             var data = StoresAccess.GetStoreList(request);
