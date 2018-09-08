@@ -27,7 +27,11 @@ namespace Pinpaida.Web.Controllers
                 PageSize = 4,
                 SearchKey = word
             };
-            var areaList = new List<AreaFilteMobdel>();
+            var areaList = new List<AreaFilteMobdel>()
+            {
+                new AreaFilteMobdel{AreaType = 1, CityName = "北京", CityNamePy ="beijing" },
+                new AreaFilteMobdel{AreaType = 1, CityName = "上海", CityNamePy ="shanghai" }
+            };
             var list = new List<StoreSearchModel>();
             var data = StoresAccess.GetStoreList(request);
             if (data != null && data.Any())
