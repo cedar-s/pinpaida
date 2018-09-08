@@ -34,7 +34,7 @@
                     {
                         var stId = model2.Id;
                         var name = model2.StoreName;
-                        var mainImage = model2.MainImage;
+                        var mainImageAll = model2.MainImageAll;
                         var storeBadges = model2.storeBadges;
                         var apptSchedulerInd = model2.apptSchedulerInd;
                         var openTime = model2.openTime;
@@ -48,7 +48,7 @@
                         var icoUnknown = storeBadges == 9 ? "ico-unknown" : "none";
                         <div class="storeitem">
                             <div class="thumb">
-                                <a href="#" title=""><img src='..@mainImage' alt="@name" /></a>
+                                <a href="#" title=""><img src='@mainImageAll' alt="@name" /></a>
                             </div>
                             <div class="meta">
                                 <h2>

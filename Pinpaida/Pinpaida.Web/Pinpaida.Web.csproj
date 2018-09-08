@@ -91,6 +91,8 @@
     <Compile Include="Controllers\BrandController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\apple.jpg" />
+    <Content Include="Content\images\huawei.jpg" />
     <Content Include="Content\images\huawei\022700001.jpg" />
     <Content Include="Content\images\huawei\700DT001.jpg" />
     <Content Include="Content\images\huawei\716002001.jpg" />
@@ -908,6 +910,10 @@
     <Content Include="Content\images\huawei\Z01QPZ001.jpg" />
     <Content Include="Content\images\huawei\Z01WPD001.jpg" />
     <Content Include="Content\images\huawei\Z01Z4L001.jpg" />
+    <Content Include="Content\images\meizu.jpg" />
+    <Content Include="Content\images\oppo.jpg" />
+    <Content Include="Content\images\vivo.jpg" />
+    <Content Include="Content\images\xiaomi.jpg" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

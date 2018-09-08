@@ -11,8 +11,8 @@
                         <li data-id="1">苹果</li>
                         <li data-id="2">华为</li>
                         <li data-id="4">小米</li>
-                        <li data-id="5">OPPO</li>
-                        <li data-id="6">VIVO</li>
+                        <li data-id="6">OPPO</li>
+                        <li data-id="5">VIVO</li>
                     </ul>
                 </div>
             </div>
@@ -39,11 +39,11 @@
             {
                 var stId = model3.Id;
                 var name = model3.StoreName;
-                var mainImage = model3.MainImage;
+                var mainImageAll = model3.MainImageAll;
                 var title = model3.city + model3.brandName + "维修点";
-                <div class="storeitem">
-                    <a href="#" title=""><img src="@mainImage" alt="@name" /></a>
-                    <h3><a href="" title="">@name</a></h3>
+                <div class="storeitem" data-id="@stId">
+                    <a href="#" title=""><img src="@mainImageAll" alt="@name" /></a>
+                    <h3><a href="" title="@name">@name</a></h3>
                     <a class="gray" href="">@title</a>
                 </div>
             }

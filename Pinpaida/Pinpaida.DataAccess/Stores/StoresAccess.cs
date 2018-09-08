@@ -223,6 +223,7 @@ namespace Pinpaida.DataAccess.Stores
                     brandName = BrandList.GetName(x.brand),
                     Id = x.Id,
                     MainImage = x.mainImage,
+                    MainImageAll = GetMainImage(x.mainImage, x.brand),
                     openTime = x.openTime,
                     phoneNumber = x.phoneNumber,
                     storeAddress = x.storeAddress,
@@ -233,6 +234,27 @@ namespace Pinpaida.DataAccess.Stores
                 }));
             }
             return list;
+        }
+        /// <summary>
+        /// 图
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static string GetMainImage(string path, int brand)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                var name = GetBrandString(brand);
+                if (!string.IsNullOrEmpty(name))
+                {
+                    return $"/Content/images/{name}.jpg";
+                }
+                else
+                {
+                    return $"/Content/images/apple.jpg";
+                }
+            }
+            return $"/Content/images{path}";
         }
     }
 }

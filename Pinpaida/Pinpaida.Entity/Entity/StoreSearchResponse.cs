@@ -27,6 +27,8 @@ namespace Pinpaida.Entity.Entity
         public string StoreName { get; set; }
         /// <summary>主图 </summary>
         public string MainImage { get; set; }
+        /// <summary>主图 </summary>
+        public string MainImageAll { get; set; }
         /// <summary>品牌 </summary>
         public int brand { get; set; }
         /// <summary>品牌 </summary>
@@ -79,8 +81,8 @@ namespace Pinpaida.Entity.Entity
             new BrandModel{Id=1,Py="apple",Name="苹果" },
             new BrandModel{Id=2,Py="huawei",Name="华为" },
             new BrandModel{Id=4,Py="xiaomi",Name="小米" },
-            new BrandModel{Id=5,Py="oppo",Name="OPPO" },
-            new BrandModel{Id=6,Py="vivo",Name="VIVO" },
+            new BrandModel{Id=5,Py="vivo",Name="VIVO" },
+            new BrandModel{Id=6,Py="oppo",Name="OPPO" },
         };
 
         public static string GetName(int id)
