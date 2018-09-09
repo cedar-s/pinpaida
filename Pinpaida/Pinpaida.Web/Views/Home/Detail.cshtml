@@ -1,4 +1,6 @@
 ﻿@using Pinpaida.Entity.Entity;
+@using Pinpaida.Common;
+
 <div class="wrap subnav">
     @{
         var brandname = ViewBag.BrandModel.Name+ "售后维修点";
@@ -8,7 +10,7 @@
         var lon = ViewBag.store.geoX;
         var storeAddress = ViewBag.store.storeAddress;
         var phone = ViewBag.store.phoneNumber;
-        var citybrandname = ViewBag.store.city + ViewBag.BrandModel.Name+ "售后维修点";
+        var brandname = ViewBag.BrandModel.Name + "售后维修点";
         var icoOffical1 = ViewBag.store.storeBadges == 5 ? "ico-offical1" : "none";
         var icoCommend = ViewBag.store.storeBadges == 3 ? "ico-commend" : "none";
         var icoOffical2 = ViewBag.store.storeBadges == 1 ? "ico-offical2" : "none";
@@ -23,7 +25,9 @@
     &gt;
     <a href="/@ViewBag.BrandModel.Py/@cityname">@citybrandname </a>
     &gt;
-    <a href="">@storeName</a>
+    <a href="/@ViewBag.BrandModel.Py/@ViewBag.store.city/@ViewBag.store.district/"> @areabrandname</a>
+    &gt;
+    <a href="#">@storeName</a>
 </div>
 
 <div class="wrap">
@@ -132,9 +136,9 @@
                     var mainImageAll = model3.MainImageAll;
                     var tip = model3.city + model3.brandName + "维修点";
                     <div class="storeitem" data-id="@stId">
-                        <a href="#" title=""><img src="@mainImageAll" alt="@name" /></a>
-                        <h3><a href="" title="@name">@name</a></h3>
-                        <a class="gray" href="">@tip</a>
+                        <a href="/home/detail/?id=@stId" title=""><img src="@mainImageAll" alt="@name" /></a>
+                        <h3><a href="/home/detail/?id=@stId" title="@name">@name</a></h3>
+                        <a class="gray" href="/home/detail/?id=@stId">@tip</a>
                     </div>
                 }
             }
