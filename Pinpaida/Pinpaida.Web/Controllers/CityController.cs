@@ -60,12 +60,6 @@ namespace Pinpaida.Web.Controllers
             ViewBag.CityList = cityList;
             return View();
         }
-        public ActionResult CityIndex1(string city)
-        {
-            ViewData["city"] = "CityIndex1";
-            return View();
-        }
-
     }
 
 

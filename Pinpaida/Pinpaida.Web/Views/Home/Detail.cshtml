@@ -9,14 +9,19 @@
         var storeAddress = ViewBag.store.storeAddress;
         var phone = ViewBag.store.phoneNumber;
         var citybrandname = ViewBag.store.city + ViewBag.BrandModel.Name+ "售后维修点";
+        var icoOffical1 = ViewBag.store.storeBadges == 5 ? "ico-offical1" : "none";
+        var icoCommend = ViewBag.store.storeBadges == 3 ? "ico-commend" : "none";
+        var icoOffical2 = ViewBag.store.storeBadges == 1 ? "ico-offical2" : "none";
+        var icoYuyue = ViewBag.store.apptSchedulerInd == 1 ? "ico-yuyue" : "none";
+        var icoUnknown = ViewBag.store.storeBadges == 9 ? "ico-unknown" : "none";
 
     }
     当前位置：
-    <a href="#">品牌手机维修</a>
+    <a href="/">品牌手机维修</a>
     &gt;
-    <a href="#">@brandname</a>
+    <a href="/@ViewBag.BrandModel.Py">@brandname</a>
     &gt;
-    <a href="">@citybrandname </a>
+    <a href="/@ViewBag.BrandModel.Py/@cityname">@citybrandname </a>
     &gt;
     <a href="">@storeName</a>
 </div>
@@ -30,11 +35,11 @@
             <div class="storeinfo">
                 <h1>@ViewBag.store.storeName</h1>
                 <div class="icons">
-                    <span class="ico-offical1">官方直营</span>
-                    <span class="ico-offical2">官方授权</span>
-                    <span class="ico-commend">优质推荐</span>
-                    <span class="ico-yuyue">支持预约</span>
-                    <span class="ico-unknown">未知店铺</span>
+                    <span class="@icoOffical1">官方直营</span>
+                    <span class="@icoOffical2">官方授权</span>
+                    <span class="@icoCommend">优质推荐</span>
+                    <span class="@icoYuyue">支持预约</span>
+                    <span class="@icoUnknown">未知店铺</span>
                 </div>
                 <div class="ico-poi">@ViewBag.store.storeAddress</div>
                 <div class="ico-time">@ViewBag.store.openTime</div>

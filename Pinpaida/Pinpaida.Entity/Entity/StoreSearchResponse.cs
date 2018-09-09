@@ -105,8 +105,13 @@ namespace Pinpaida.Entity.Entity
             new AreaFilteMobdel{ CityName = "上海", CityNamePy ="shanghai", AreaType = 1},
             new AreaFilteMobdel{ CityName = "广州", CityNamePy ="guangzhou", AreaType = 1},
             new AreaFilteMobdel{ CityName = "深圳", CityNamePy ="shenzhen", AreaType = 1},
-            new AreaFilteMobdel{ CityName = "杭州", CityNamePy ="杭州", AreaType = 1},
-            new AreaFilteMobdel{ CityName = "苏州", CityNamePy ="苏州", AreaType = 1}
+            new AreaFilteMobdel{ CityName = "成都", CityNamePy ="chengdu", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "重庆", CityNamePy ="chongqing", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "武汉", CityNamePy ="wuhan", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "天津", CityNamePy ="tianjing", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "杭州", CityNamePy ="hangzhou", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "南京", CityNamePy ="najing", AreaType = 1},
+            new AreaFilteMobdel{ CityName = "苏州", CityNamePy ="suzhou", AreaType = 1}
         };
     }
 
