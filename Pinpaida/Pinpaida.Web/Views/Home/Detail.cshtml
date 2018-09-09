@@ -10,12 +10,13 @@
         var lon = ViewBag.store.geoX;
         var storeAddress = ViewBag.store.storeAddress;
         var phone = ViewBag.store.phoneNumber;
-        var brandname = ViewBag.BrandModel.Name + "售后维修点";
         var icoOffical1 = ViewBag.store.storeBadges == 5 ? "ico-offical1" : "none";
         var icoCommend = ViewBag.store.storeBadges == 3 ? "ico-commend" : "none";
         var icoOffical2 = ViewBag.store.storeBadges == 1 ? "ico-offical2" : "none";
         var icoYuyue = ViewBag.store.apptSchedulerInd == 1 ? "ico-yuyue" : "none";
         var icoUnknown = ViewBag.store.storeBadges == 9 ? "ico-unknown" : "none";
+        var citybrandname = ViewBag.BrandModel.Name + ViewBag.store.city + "售后维修点";
+        var areabrandname = ViewBag.BrandModel.Name + ViewBag.store.city + ViewBag.store.district + "售后维修点";
 
     }
     当前位置：
